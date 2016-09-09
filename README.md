@@ -1,4 +1,4 @@
-## think_hsblog
+﻿## think_hsblog
 基于Thinkphp+Bootstrap开发的个人博客系统
 
 ## <?php echo "在开发阶段";  die; ?>
@@ -19,5 +19,5 @@ OSChina: ....
 
 博客: [http://www.hsblogs.com](http://www.hsblogs.com)
 
-## 联系我
+## 联系我 
 QQ:`1286511224`
