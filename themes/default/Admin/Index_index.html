@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<include file="public:head" />
+<body>
+<include file="public:header" />
+<include file="public:lifebar" />
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<section class="Hui-article-box">
+    <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+        <div class="Hui-tabNav-wp">
+            <ul id="min_title_list" class="acrossTab cl">
+                <li class="active"><span title="欢迎页" data-href="welcome.html">欢迎页</span><em></em></li>
+            </ul>
+        </div>
+        <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont Hui-iconfont-arrow2-left "></i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont .Hui-iconfont-arrow2-right"></i></a></div>
+    </div>
+    <div id="iframe_box" class="Hui-article">
+        <div class="show_iframe">
+            <div style="display:none" class="loading"></div>
+            <iframe scrolling="yes" frameborder="0" src="{:U('Admin/Index/weclome')}"></iframe>
+        </div>
+    </div>
+</section>
+<include file="public:footer" />
+</body>
+</html>

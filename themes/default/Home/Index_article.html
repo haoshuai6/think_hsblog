@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<include file="public:head" />
+<body>
+<!-- scrollToTop -->
+
+<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+<!-- page wrapper start -->
+
+<div class="page-wrapper">
+    <include file="public:header_top" />
+    <include file="public:header" />
+    <!-- page-intro start-->
+
+    <div class="page-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
+                        <li class="active">Blogpost</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-intro end -->
+
+    <!-- main-container start -->
+    <section class="main-container">
+
+        <div class="container">
+            <div class="row">
+
+                <!-- main start -->
+                <div class="main col-md-8">
+
+                    <!-- page-title start -->
+                    <h1 class="page-title">文章详情页面标题</h1>
+                    <!-- page-title end -->
+                    <!-- blogpost start -->
+                    <article class="clearfix blogpost full">
+                        <div class="blogpost-body">
+                            <div class="side">
+                                <div class="post-info">
+                                    <span class="day">12</span>
+                                    <span class="month">08 2016</span>
+                                </div>
+                                <div id="affix"><span class="share">分享</span><div id="share"></div></div>
+                            </div>
+                            <div class="blogpost-content">
+                                <header>
+                                    <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">haoshuai_it</a></div>
+                                </header>
+                                <div class="owl-carousel content-slider-with-controls">
+                                   <!-- <img src="__PUBLIC__/images/blog-1.jpg" alt="">-->
+                                </div>
+                                <p>
+                                    自己搭建的Git服务器私有库，测试完毕，可以正常使用！[如何搭建自己的Git服务器]
+
+                                    既然可以正常clone、add、commit、push到远程git服务器，那么成功了，也不能及时看到效果。故想到，
+
+                                    Git和SVN应该都有【钩子】hooks机制，[svn如何实现版本库文件和web目录实时同步 ]，来利用shell 脚本去自动同步，将提交到版本库的文件自动同步到www目录指定的文件夹下，
+
+                                    从而，可以实现，实时提交，实时查看效果！
+
+                                    具体步骤：
+
+                                    1、已经搭建好git远端服务器，可以正常使用的前提下
+                                    2、在web目录下，新建一个gitdemo目录
+                                    $ mkdir  /www/gitdemo
+                                    3、找到在创建git服务器时候，你自己设置的仓库：/data/git/gitdemo.git
+                                    4、设置钩子
+                                    cd hooks
+                                    vim post-receive 编辑模式输入：
+
+                                    #!/bin/bash
+                                    git --work-tree=/home/www/gitdemo  checkout -f
+                                    5、保存退出后，将该文件用户及用户组都设置成git
+                                    chown git:git post-receive
+                                    6、给这个shell文件可执行权限
+                                    chmod +x post-receive
+                                    钩子已经设置完毕！
+                                    去git客户端进行测试，push成功后，但是在/www/gitdemo/目录下没有发现你推送的文件，那么就是由于文件夹的权限的原因造成的！
+
+                                    假设你的web目录www的所属组是root（www）
+                                    1）你可以将你的git用户加入这个组，并给git添加写入权限。
+                                    2）你还可以直接将这个文件的所属改为git，chown git:git /www/gitdemo/
+
+                                </p>
+                            </div>
+                        </div>
+                        <footer class="clearfix">
+                            <ul class="links pull-left">
+                                <li>本文系hsblog创作，可自由转载、引用，但需署名作者且注明文章出处..</li>
+                                <li>本文标题：XXXXXXXX</li>
+                                <li>原文网址：功能暂未开放.</li>
+                                <li>本文标签：xxxxxx</li>
+                                <li>发表自： XXXX  位于：xxxx  评论： 1  关键词：xxxxxx</li>
+                                <li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li>
+                                <li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
+                            </ul>
+                        </footer>
+                    </article>
+                    <!-- blogpost end -->
+
+                    <!-- comments start -->
+                    <div class="comments">
+                        <h2 class="title">这里有 3 条评论</h2>
+
+                        <!-- comment start -->
+                        <div class="comment clearfix">
+                            <div class="comment-avatar">
+                                <img src="__PUBLIC__/images/avatar.jpg" alt="avatar">
+                            </div>
+                            <div class="comment-content">
+                                <h3>搜寻你的样子</h3>
+                                <div class="comment-meta">By <a href="#">admin</a> | Today, 12:31</div>
+                                <div class="comment-body clearfix">
+                                    <p>请问p是什么方法？thinkphp没有这个方法，应该是自己定义的，能看一下这个方法么？ </p>
+                                    <a href="blog-post.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> 回复</a>
+                                </div>
+                            </div>
+
+                            <!-- comment start -->
+                            <div class="comment clearfix">
+                                <div class="comment-avatar">
+                                    <img src="__PUBLIC__/images/avatar.jpg" alt="avatar">
+                                </div>
+                                <div class="comment-content clearfix">
+                                    <h3>坐着的水</h3>
+                                    <div class="comment-meta">By <a href="#">admin</a> | Today, 12:31</div>
+                                    <div class="comment-body">
+                                        <p>我是用这个方法导入公司的考勤数据，当考勤记录只有100多条的时候，没啥问题，当考勤记录1000多条，就会报内存不足，用G查看发现解析excel很耗内存，大神是怎么解决的？</p>
+                                        <a href="blog-post.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> 回复</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- comment end -->
+                        </div>
+                        <!-- comment end -->
+                    </div>
+                    <!-- comments end -->
+
+                    <!-- comments form start -->
+                    <div class="comments-form">
+                        <h2 class="title">留下脚印</h2>
+                        <form role="form" id="comment-form">
+                            <div class="form-group has-feedback">
+                                <label for="name4">昵称</label>
+                                <input type="text" class="form-control" id="name4" placeholder="" name="name4" required>
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="subject4">邮箱</label>
+                                <input type="text" class="form-control" id="subject4" placeholder="" name="subject4" required>
+                                <i class="fa fa-envelope-o form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="message4">内容</label>
+                                <textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required></textarea>
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
+                            <input type="submit" value="提交" class="btn btn-default">
+                        </form>
+                    </div>
+                    <!-- comments form end -->
+
+                </div>
+                <!-- main end -->
+
+                <!-- sidebar start -->
+                <include file="public:sidebar" />
+
+            </div>
+        </div>
+    </section>
+    <!-- main-container end -->
+
+    <!-- section start -->
+    <!-- ================ -->
+    <div class="section gray-bg text-muted footer-top clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="owl-carousel clients">
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-1.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-2.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-3.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-4.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-5.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-6.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-7.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="__PUBLIC__/images/client-8.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="inline">
+                        <p class="margin-clear">Design is not just what it looks like and feels like. Design is how it works.</p>
+                        <footer><cite title="Source Title">Steve Jobs </cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- section end -->
+
+    <include file="public:footer" />
+
+</div>
+<!-- page-wrapper end -->
+<include file="public:javascript" />
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+.idea/copyright/profiles_settings.xml
+*.xml
+*.iml
+.svn/entries
+.svn/format
+*.svn-base
+.svn/wc.db
