@@ -3,5 +3,5 @@
 *.svn-base
 .idea/*
 .svn/*
-data/runtime/*
+/data/runtime/*
 application/Common/Conf/db.php
