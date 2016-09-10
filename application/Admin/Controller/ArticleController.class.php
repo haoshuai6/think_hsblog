@@ -11,7 +11,7 @@ class ArticleController extends AdminBaseController{
         $this->db_Articles = M ('Articles');
     }
     // 文章首页
-    public function article_list(){
+    public function show(){
         $article_list = $this->db_Articles->select();
         $this->assign("article_count",count($article_list));
         $this->assign("article_list",$article_list);
@@ -27,17 +27,22 @@ class ArticleController extends AdminBaseController{
                 $article['a_content'] = htmlspecialchars_decode($article['editorValue']);
                 $result = $this->db_Articles->add($article);
                 if ($result) {
-                    $this->success("文章发布成功",U('Admin/Article/article_list'));
+                    $this->success("文章发布成功",U('Admin/Article/article_list'),'',1);
                 } else {
-                    $this->error("文章发布失败",U('Admin/Article/article_list'));
+                    $this->error("文章发布失败",U('Admin/Article/article_list'),'',1);
                 }
             }else{
-                $this->error("TP令牌验证错误",U('Admin/Article/article_list'));
+                $this->error("TP令牌验证错误",U('Admin/Article/article_list'),'',1);
 
             }
         }else{
             $this->display();
         }
-
+    }
+    public function category_show(){
+        $this->display();
+    }
+    public function category_add(){
+        $this->display();
     }
 }

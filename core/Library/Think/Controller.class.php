@@ -195,8 +195,8 @@ abstract class Controller {
      * @param mixed $ajax 是否为Ajax方式 当数字时指定跳转时间
      * @return void
      */
-    protected function success($message='',$jumpUrl='',$ajax=false) {
-        $this->dispatchJump($message,1,$jumpUrl,$ajax);
+    protected function success($message='',$jumpUrl='',$ajax=false,$reload) {
+        $this->dispatchJump($message,1,$jumpUrl,$ajax,$reload);
     }
 
     /**
@@ -255,10 +255,11 @@ abstract class Controller {
      * @param Boolean $status 状态
      * @param string $jumpUrl 页面跳转地址
      * @param mixed $ajax 是否为Ajax方式 当数字时指定跳转时间
+     * @param  Boolean $reload 是否刷新父页面默认0不刷新 by haoshuai_it
      * @access private
      * @return void
      */
-    private function dispatchJump($message,$status=1,$jumpUrl='',$ajax=false) {
+    private function dispatchJump($message,$status=1,$jumpUrl='',$ajax=false,$reload=0) {
         if(true === $ajax || IS_AJAX) {// AJAX提交
             $data           =   is_array($ajax)?$ajax:array();
             $data['info']   =   $message;
@@ -275,6 +276,7 @@ abstract class Controller {
         $this->assign('status',$status);   // 状态
         //保证输出不受静态缓存影响
         C('HTML_CACHE_ON',false);
+        $this->assign('reload',$reload);// 是否刷新父窗口默认0不刷新
         if($status) { //发送成功信息
             $this->assign('message',$message);// 提示信息
             // 成功操作后默认停留1秒

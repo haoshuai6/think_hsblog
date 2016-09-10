@@ -44,6 +44,9 @@ var interval = setInterval(function(){
 	};
 }, 1000);
 })();
+<?php if(isset($reload) && $reload == 1) {?>
+		parent.location.reload();
+<?php } ?>
 </script>
 </body>
 </html>

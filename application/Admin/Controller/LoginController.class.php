@@ -12,7 +12,6 @@ class LoginController extends BaseController{
     }
     // 登陆页面
     public function login(){
-        session('hsblog_admin','hsblog_is_login');
         if(IS_POST){
             $data = I('post.');
             if(check_verify($data['verify'])){
