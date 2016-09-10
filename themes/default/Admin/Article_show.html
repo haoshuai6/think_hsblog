@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <include file="public:head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 文章管理 <span class="c-gray en">&gt;</span> 文章列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
@@ -11,9 +13,9 @@
 			<option value="2">分类二</option>
 		</select>
 		</span> 日期范围：
-        <input type="text"  id="logmin" class="input-text Wdate" style="width:120px;">
+        <input type="text"  id="logmin" class="input-text Wdate" style="width:120px;" data-date-format="yyyy-mm-dd hh:ii">
         -
-        <input type="text"  id="logmax" class="input-text Wdate" style="width:120px;">
+        <input type="text"  id="logmax" class="input-text Wdate" style="width:120px;" data-date-format="yyyy-mm-dd hh:ii">
         <input type="text" name="" id="" placeholder=" 文章名称" style="width:250px" class="input-text">
         <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜文章</button>
     </div>
@@ -60,6 +62,7 @@
     </div>
 </div>
 <include file="public:footer"/>
+<script type="text/javascript" src="__PUBLIC__/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript">
     $('.table-sort').dataTable({
         "aaSorting": [[ 1, "desc" ]],//默认第几个排序
@@ -69,7 +72,9 @@
              {"orderable":false,"aTargets":[0,2,3,4,5,6,7,8]}// 不参与排序的列
         ]
     });
-
+    $('#logmin').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
+    });
     /*文章-添加*/
     function article_add(title,url){
         var index = layer.open({
