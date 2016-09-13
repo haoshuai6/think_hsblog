@@ -14,7 +14,7 @@ function check_verify($code){
 function show_verify($config=''){
     if($config==''){
         $config=array(
-            'codeSet'=>'1234567890zxcvbnmlkjhgfdsaqwertyuiop',
+            'codeSet'=>'123456789zxcvbnmlkjhgfdsaqwertyuip',
             'fontSize'=>30,
             'useCurve'=>false,
             'imageH'=>60,

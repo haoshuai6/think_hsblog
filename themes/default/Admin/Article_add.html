@@ -2,6 +2,13 @@
 <html>
 <head>
     <include file="public:head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/labelauty/css/jquery-labelauty.css" />
+    <style>
+        ul { list-style-type: none;}
+        li { display: inline-block;}
+        li { margin: 10px 0;}
+        input.labelauty + label { font: 12px "Microsoft Yahei";}
+    </style>
 </head>
 <body>
 <article class="page-container">
@@ -14,15 +21,16 @@
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="" class="select">
-					<option value="0">全部栏目</option>
-					<option value="1">新闻资讯</option>
-					<option value="11">├行业动态</option>
-					<option value="12">├行业资讯</option>
-					<option value="13">├行业新闻</option>
-				</select>
-				</span> </div>
+            <div class="formControls col-xs-8 col-sm-9">
+                <ul class="dowebok">
+                    <li><input type="checkbox" name="checkbox" data-labelauty="CSS"></li>
+                    <li><input type="checkbox" name="checkbox" data-labelauty="JavaScript"></li>
+                    <li><input type="checkbox" name="checkbox" data-labelauty="SEO"></li>
+                    <li><input type="checkbox" name="checkbox" data-labelauty="PHP"></li>
+                    <li><input type="checkbox" name="checkbox" data-labelauty="JAVA"></li>
+                    <li><input type="checkbox" name="checkbox" data-labelauty=".NET"></li>
+                </ul>
+            </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">关键词：</label>
@@ -33,16 +41,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">文章作者：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0"  id="author" name="author">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
-            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
-                <div class="check-box">
-                    <input type="checkbox" id="checkbox-pinglun" name="comment">
-                    <label for="checkbox-pinglun">&nbsp;</label>
-                </div>
+                <input type="text" class="input-text" value="haoshuai_it"  id="author" name="author">
             </div>
         </div>
         <div class="row cl">
@@ -52,20 +51,43 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="check-box">
+                    <input type="checkbox" id="checkbox-pinglun" name="pinglun" data-labelauty="允许"  checked="true">
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">是否置顶：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="check-box">
+                    <input type="checkbox" id="checkbox-top" name="top" data-labelauty="置顶">
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">是否原创：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="check-box">
+                    <input type="checkbox" id="checkbox-original" name="original" data-labelauty="原创"  checked="true">
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-primary radius" type="submit" id="submitBtn"><i class="Hui-iconfont">&#xe632;</i> 发布文章</button>
+                <button class="btn btn-primary radius" type="submit" id="submitBtn"><i class="Hui-iconfont">&#xe632;</i> 添加文章</button>
             </div>
         </div>
     </form>
 </article>
-
 <include file="public:footer" />
 
-<script type="text/javascript" src="__PUBLIC__/lib/icheck/jquery.icheck.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
-
+<script type="text/javascript" src="__PUBLIC__/lib/icheck/icheck.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/labelauty/js/jquery-labelauty.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/messages_zh.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/lib/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="__PUBLIC__/lib/ueditor/ueditor.all.min.js"> </script>
 <script type="text/javascript" src="__PUBLIC__/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -73,6 +95,7 @@
    $(function () {
         var ue = UE.getEditor('editor');
         var path = "{:U('Admin/Article/add')}";
+       $(':input').labelauty();
         $("#submitBtn").click(function () {
            $('#article_form').attr("action", path).submit();
         });

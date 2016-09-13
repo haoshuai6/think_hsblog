@@ -1,3 +1,5 @@
 @charset "utf-8";
-/* 你自己的样式 */
+.check-box, .radio-box {
+    padding-left: 0px;
+}
 

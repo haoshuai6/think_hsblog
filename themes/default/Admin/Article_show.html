@@ -3,7 +3,7 @@
 <include file="public:head" />
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/datetimepicker/css/jquery.datetimepicker.css" />
 <style>
-    .xdsoft_datetimepicker  .xdsoft_calendar td > div{
+    .xdsoft_datetimepicker  .xdsoft_calendar td > div {
         padding-right:10px;
         padding-top: 5px
     }
@@ -18,41 +18,47 @@
 			<option value="2">分类二</option>
 		</select>
 		</span> 日期范围：
-        <input type="text"  id="logmin" class="input-text Wdate" style="width:120px;">
+        <input type="text"  id="start_date" class="input-text Wdate" style="width:120px;">
         -
-        <input type="text"  id="logmax" class="input-text Wdate" style="width:120px;">
-        <input type="text" name="" id="" placeholder=" 文章名称" style="width:250px" class="input-text">
+        <input type="text"  id="end_date" class="input-text Wdate" style="width:120px;">
+        <input type="text" name="title" id="title" placeholder=" 文章名称" style="width:250px" class="input-text">
         <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜文章</button>
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
-        <a class="btn btn-primary radius" data-title="添加文章" onclick="article_add('发布文章','{:U(\'Admin/Article/add\')}')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加文章</a></span>
+        <a class="btn btn-primary radius" data-title="添加文章" onclick="article_add('添加文章','{:U(\'Admin/Article/add\')}')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加文章</a></span>
         <span class="r">共有文章：<strong>{$article_count} </strong> 篇</span> </div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr class="text-c">
-                <th width="25"><input type="checkbox" name="" value=""></th>
-                <th width="80">ID</th>
-                <th>标题</th>
+                <th width="25"><input type="checkbox" name="" id='text_box' value=""></th>
+                <th width="25">ID</th>
+                <th width="90">标题</th>
                 <th width="80">分类</th>
-                <th width="80">来源</th>
-                <th width="120">更新时间</th>
-                <th width="75">浏览次数</th>
-                <th width="60">发布状态</th>
-                <th width="120">操作</th>
+                <th width="40">作者</th>
+                <th width="30">置顶</th>
+                <th width="30">原创</th>
+                <th width="30">评论</th>
+                <th width="50">浏览数</th>
+                <th width="75">发布时间</th>
+                <th width="50">状态</th>
+                <th width="80">操作</th>
             </tr>
             </thead>
             <tbody>
             <volist name="article_list" id="a_list">
               <tr class="text-c">
-                <td><input type="checkbox" value="" name=""></td>
-                <td>{$a_list['a_id']}</td>
-                <td class="text-l"><u style="cursor:pointer" class="text-primary" onClick="article_edit('查看','article-zhang.html','10001')" title="查看">{$a_list['a_title']}</u></td>
-                <td>{$a_list['a_keywords']}</td>
-                <td>{$a_list['a_keywords']}</td>
-                <td>{$a_list['a_add_time']}</td>
-                <td>{$a_list['a_click_view']}</td>
-                <td class="td-status">
+                    <td><input type="checkbox" value="" name=""></td>
+                    <td>{$a_list['a_id']}</td>
+                    <td>{$a_list['a_title']}</td>
+                    <td>{$a_list['a_category_id']}</td>
+                    <td>{$a_list['a_author']}</td>
+                    <td>{$a_list['a_is_top']}</td>
+                    <td>{$a_list['a_is_original']}</td>
+                    <td>{$a_list['a_is_comment']}</td>
+                    <td>{$a_list['a_click_view']}</td>
+                    <td>{$a_list['a_add_time']}</td>
+                  <td class="td-status">
                     <if condition="$a_list['a_state'] eq 1 ">
                         <span class="label label-success radius">已发布</span>
                         <else />
@@ -75,11 +81,22 @@
             "bStateSave": true,//状态保存
             "aoColumnDefs": [
                 //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-                {"orderable":false,"aTargets":[0,2,3,4,5,6,7,8]}// 不参与排序的列
+                {"orderable":false,"aTargets":[0,2,3,4,5,6,7,8,10,11]}// 不参与排序的列
             ]
         });
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'icheckbox_flat-green'
+        });
+
+        $('#text_box').on('ifChecked', function(event){
+            $('input').iCheck('check');
+        });
+        $('#text_box').on('ifUnchecked', function(event){
+            $('input').iCheck('uncheck');
+        });
         $.datetimepicker.setLocale('ch');//设置中文
-        $('#logmin').datetimepicker({
+        $('#start_date').datetimepicker({
             lang:"ch",           //语言选择中文
             format:"Y-m-d",      //格式化日期
             yearStart:2000,     //设置最小年份
@@ -87,6 +104,14 @@
             timepicker:false,    //关闭时间选项
             todayButton:true    //关闭选择今天按钮
        });
+        $('#end_date').datetimepicker({
+            lang:"ch",           //语言选择中文
+            format:"Y-m-d",      //格式化日期
+            yearStart:2000,     //设置最小年份
+            yearEnd:2030,       //设置最大年份
+            timepicker:false,    //关闭时间选项
+            todayButton:true    //关闭选择今天按钮
+        });
     });
 
     /*文章-添加*/
