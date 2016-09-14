@@ -16,7 +16,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" id="title" name="title">
+                <input type="text" class="input-text" value="{$article_info['a_title']}" id="title" name="title">
             </div>
         </div>
         <div class="row cl">
@@ -24,7 +24,7 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <ul class="dowebok">
                     <volist name="category_list" id="ac_list">
-                        <li><input type="checkbox" name="select_ac[]" data-labelauty="{$ac_list['ac_name']}" value="{$ac_list['ac_id']}"></li>
+                        <li><input type="checkbox" name="select_ac[]"  data-labelauty="{$ac_list['ac_name']}" value="{$ac_list['ac_id']}"></li>
                     </volist>
                 </ul>
             </div>
@@ -32,19 +32,19 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">关键词：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value=""  id="keywords" name="keywords">
+                <input type="text" class="input-text" value="{$article_info['a_keywords']}"  id="keywords" name="keywords">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">文章作者：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="haoshuai_it"  id="author" name="author">
+                <input type="text" class="input-text" value="{$article_info['a_author']}"  id="author" name="author">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <script id="editor" name="content"  type="text/plain" style="width:100%;height:400px;"></script>
+                <script id="editor" name="content"  type="text/plain" style="width:100%;height:400px;" value="{$article_info['a_content']}"></script>
             </div>
         </div>
         <div class="row cl">
@@ -52,7 +52,7 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <div class="check-box">
                     <li><input type="radio" name="top" data-labelauty="是" value="1"></li>
-                    <li><input type="radio" name="top" data-labelauty="否" checked="true" value="0"></li>
+                    <li><input type="radio" name="top" data-labelauty="否" value="0"></li>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <label class="form-label col-xs-4 col-sm-2">是否显示：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <div class="check-box">
-                    <li><input type="radio" name="state" data-labelauty="是" checked="true" value="1"></li>
+                    <li><input type="radio" name="state" data-labelauty="是" value="1"></li>
                     <li><input type="radio" name="state" data-labelauty="否" value="0"></li>
                 </div>
             </div>
@@ -69,7 +69,7 @@
             <label class="form-label col-xs-4 col-sm-2">是否原创：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <div class="check-box">
-                    <li><input type="radio" name="original" data-labelauty="是" checked="true" value="1"></li>
+                    <li><input type="radio" name="original" data-labelauty="是"  value="1"></li>
                     <li><input type="radio" name="original" data-labelauty="否"  value="0"></li>
                    <!-- <input type="checkbox" id="checkbox-original" name="original" data-labelauty="原创"  checked="true" value="1">-->
                 </div>
@@ -79,14 +79,15 @@
             <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <div class="check-box">
-                    <li><input type="radio" name="comment" data-labelauty="允许" checked="true" value="1"></li>
+                    <li><input type="radio" name="comment" data-labelauty="允许"  value="1"></li>
                     <li><input type="radio" name="comment" data-labelauty="不允许" value="0"></li>
                 </div>
             </div>
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-primary radius size-L" type="submit" id="submitBtn"><i class="Hui-iconfont Hui-iconfont-save"></i> 添加文章</button>
+                <input type="hidden" name="id"  value="{$article_info['a_id']}">
+                <button class="btn btn-primary radius size-L" type="submit" id="submitBtn"><i class="Hui-iconfont Hui-iconfont-save"></i> 修改文章</button>
                 <button onclick="layer_close();" class="btn btn-default radius size-L" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
             </div>
         </div>
@@ -105,9 +106,21 @@
 <script type="text/javascript">
    $(function () {
         var ue = UE.getEditor('editor');
-        var path = "{:U('Admin/Article/add')}";
+        var path = "{:U('Admin/Article/edit')}";
        $(':input').labelauty();
-        $("#submitBtn").click(function () {
+       $("input[type=radio][name=top][value=\'{$article_info.a_is_top}\']").attr("checked",'checked');
+       $("input[type=radio][name=state][value=\'{$article_info.a_state}\']").attr("checked",'checked');
+       $("input[type=radio][name=comment][value=\'{$article_info.a_is_comment}\']").attr("checked",'checked');
+       $("input[type=radio][name=original][value=\'{$article_info.a_is_original}\']").attr("checked",'checked');
+
+       var a_category = '{$article_info.a_category_id}';
+       var arr = new Array();
+       arr = a_category.split(',');
+       for(var i = 0;i < arr.length;i++)
+       {
+           $("input[type=checkbox][name=\"select_ac[]\"][value="+arr[i]+"]").attr("checked",'checked');
+       }
+       $("#submitBtn").click(function () {
            $('#article_form').attr("action", path).submit();
         });
     });

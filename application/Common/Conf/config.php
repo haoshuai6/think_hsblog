@@ -26,6 +26,8 @@ return array(
         '__ADMIN_JS__'      =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/js',
         '__ADMIN_IMAGE__'   =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/image',
     ),
+    'ARTICLE_RECYCLE'   =>    '2',//文章放入回收站的标志
+
 
 
 );
