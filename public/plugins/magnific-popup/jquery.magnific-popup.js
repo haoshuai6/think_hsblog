@@ -3,7 +3,7 @@
 * Copyright (c) 2014 Dmitry Semenov; */
 ;(function($) {
 
-/*>>Core*/
+/*>>core*/
 /**
  * 
  * Magnific Popup Core JS file
@@ -814,7 +814,7 @@ MagnificPopup.prototype = {
 		return mfp.scrollbarSize;
 	}
 
-}; /* MagnificPopup Core prototype end */
+}; /* MagnificPopup core prototype end */
 
 
 
@@ -975,7 +975,7 @@ console.log('Test #2:', performance.now() - start);
 */
 
 
-/*>>Core*/
+/*>>core*/
 
 /*>>inline*/
 
@@ -1466,7 +1466,7 @@ $.magnificPopup.registerModule('zoom', {
 								animatedImg.remove();
 								image = animatedImg = null;
 								_mfpTrigger('ZoomAnimationEnded');
-							}, 16); // avoid blink when switching image 
+							}, 16); // avoid blink when switching images 
 
 						}, duration); // this timeout equals animation duration
 

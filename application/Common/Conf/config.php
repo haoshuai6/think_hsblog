@@ -10,7 +10,7 @@ return array(
     'URL_MODEL'         => 0,
     
     'MODULE_ALLOW_LIST'     =>  array ('Home','Admin'),
-    'LOAD_EXT_CONFIG'       =>  'db',//加载网站设置文件//数据库配置文件
+    'LOAD_EXT_CONFIG'       =>  'db,systemconfig',//加载网站设置文件//数据库配置文件
     'TOKEN_ON'      =>    true,  // 开启令牌验证 默认关闭
     'TOKEN_NAME'    =>    '__HSBLOGS__',    // 令牌验证的表单隐藏字段名称，默认为__hash__
     'TOKEN_TYPE'    =>    'md5',  //令牌哈希验证规则 默认为MD5
@@ -26,7 +26,10 @@ return array(
         '__ADMIN_JS__'      =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/js',
         '__ADMIN_IMAGE__'   =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/image',
     ),
-    'ARTICLE_RECYCLE'   =>    '2',//文章放入回收站的标志
+    'ARTICLE_RECYCLE'   =>    '2', //文章放入回收站的标志
+    'ARTICLE_NORMAL'   =>    '1',  //文章正常显示状态
+    'ARTICLE_CATEGORY_NORMAL'   =>    '1',  //分类正常显示状态
+
 
 
 

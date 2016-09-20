@@ -95,11 +95,7 @@
 </article>
 <include file="public:footer" />
 
-<script type="text/javascript" src="__PUBLIC__/lib/icheck/icheck.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/lib/labelauty/js/jquery-labelauty.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/validate-methods.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/messages_zh.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/lib/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="__PUBLIC__/lib/ueditor/ueditor.all.min.js"> </script>
 <script type="text/javascript" src="__PUBLIC__/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -121,8 +117,28 @@
            $("input[type=checkbox][name=\"select_ac[]\"][value="+arr[i]+"]").attr("checked",'checked');
        }
        $("#submitBtn").click(function () {
-           $('#article_form').attr("action", path).submit();
-        });
+           if($("#article_form").valid()){
+               $('#article_form').attr("action", path).submit();
+           }
+       });
+       $("#article_form").validate({
+           rules:{
+               title:{
+                   required:true,
+               },
+               keywords:{
+                   required:true,
+               }
+           },
+           messages : {
+               title: {
+                   required: '请输入文章标题'
+               },
+               keywords:{
+                   required: '请输入关键词'
+               }
+           }
+       });
     });
 </script>
 </body>

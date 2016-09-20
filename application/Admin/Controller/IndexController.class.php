@@ -7,6 +7,7 @@ use Common\Controller\AdminBaseController;
 class IndexController extends AdminBaseController{
     // 后台首页
     public function index(){
+        
         $this->display();
     }
     // 欢迎页面

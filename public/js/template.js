@@ -473,33 +473,6 @@
 				}
 			};
 		});
-
-		// Sharrre plugin
-		//-----------------------------------------------
-		if ($('#share').length>0) {
-			$('#share').sharrre({
-				share: {
-					twitter: true,
-					facebook: true,
-					googlePlus: true
-				},
-				template: '<ul class="social-links clearfix"><li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li><li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li><li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li></ul>',
-				enableHover: false,
-				enableTracking: true,
-				render: function(api, options){
-					$(api.element).on('click', '.twitter a', function() {
-						api.openPopup('twitter');
-					});
-					$(api.element).on('click', '.facebook a', function() {
-						api.openPopup('facebook');
-					});
-					$(api.element).on('click', '.googleplus a', function() {
-						api.openPopup('googlePlus');
-					});
-				}
-			});
-		};
-
 		// Contact forms validation
 		//-----------------------------------------------		
 		if($("#contact-form").length>0) {

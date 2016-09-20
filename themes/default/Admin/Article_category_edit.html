@@ -9,27 +9,29 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" id="name" name="name">
+                <input type="text" class="input-text" value="{$category_info['ac_name']}" id="name" name="name">
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">排序：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value=""  id="sort" name="sort">
+                <input type="text" class="input-text" value="{$category_info['ac_sort']}"  id="sort" name="sort">
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">描述：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value=""  id="description" name="description">
+                <input type="text" class="input-text" value="{$category_info['ac_description']}"  id="description" name="description">
             </div>
         </div>
 
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-primary radius" type="submit" id="submitBtn"><i class="Hui-iconfont">&#xe632;</i> 提交 </button>
+                <input type="hidden" name="id"  value="{$category_info['ac_id']}">
+                <button class="btn btn-primary radius size-L" type="submit" id="submitBtn"><i class="Hui-iconfont Hui-iconfont-save"></i> 修改分类 </button>
+                <button onclick="layer_close();" class="btn btn-default radius size-L" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
             </div>
         </div>
     </form>
@@ -38,7 +40,7 @@
 
 <script type="text/javascript">
    $(function () {
-        var path = "{:U('Admin/Article/category_add')}";
+        var path = "{:U('Admin/Article/category_edit')}";
        $("#submitBtn").click(function () {
            if($("#category_form").valid()){
                $('#category_form').attr("action", path).submit();

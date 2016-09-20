@@ -30,12 +30,12 @@
                 <td>{$ac_list['ac_sort']}</td>
                 <td class="td-status">
                     <if condition="$ac_list['ac_state'] eq 1 ">
-                        <span class="label label-success radius">正常显示</span>
+                        <span class="btn btn-success radius">正常显示</span>
                         <else />
-                        <span class="label label-warning radius">禁止显示</span>
+                        <span class="btn btn-danger radius">禁止显示</span>
                     </if>
                 </td>
-                <td class="f-14 td-manage"> <a style="text-decoration:none" class="ml-5" onClick="article_edit('分类编辑','article-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="article_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                <td class="f-14 td-manage"> <a style="text-decoration:none" class="ml-5" onClick="category_edit('编辑分类-[{$ac_list[\'ac_name\']}]','{:U(\'Admin/Article/category_edit\',array(\'ac_id\'=>$ac_list[\'ac_id\']))}')" href="javascript:;" title="编辑"><i class="Hui-iconfont Hui-iconfont-edit btn btn-primary-outline radius"></i></a> <a style="text-decoration:none" class="ml-5" onClick="category_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del2 btn btn-secondary-outline radius"></i></a></td>
               </tr>
             </volist>
             </tbody>
@@ -74,8 +74,27 @@
     /*分类-删除*/
     function category_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',1);
+            layer.msg('暂时不能删除分类!',{icon:2,time:3000});
+            /*$.ajax({
+                url:'{:U(\'Admin/Article/del\')}',
+                data:{
+                    ac_id : id,
+                },
+                type:'post',
+                cache:false,
+                dataType:'json',
+                success:function(data) {
+                    if(data.msg == "true" ){
+                        layer.msg('分类删除成功!',{icon:1,time:3000});
+                        window.location.reload();
+                    }else{
+                        layer.msg('分类删除异常!',{icon:1,time:3000});
+                    }
+                },
+                error : function() {
+                    layer.msg('分类删除异常!',{icon:1,time:3000});
+                }
+            });*/
         });
     }
 </script>

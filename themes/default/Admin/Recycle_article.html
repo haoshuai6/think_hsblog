@@ -85,12 +85,12 @@
                     <if condition="$a_list['a_state'] eq 1 ">
                         <span class="btn btn-success radius">已发布</span>
                     <elseif condition="$a_list['a_state'] eq 2" />
-                        <span class="btn btn-danger radius">放入回收站</span>
+                        <span class="btn btn-danger radius">已在回收站</span>
                     <else />
                         <span class="btn btn-warning radius">禁止显示</span>
                     </if>
                   </td>
-                <td class="f-14 td-manage"> <a style="text-decoration:none" class="ml-5" onClick="article_edit('编辑文章-[{$a_list[\'a_title\']}]','{:U(\'Admin/Article/edit\',array(\'a_id\'=>$a_list[\'a_id\']))}')" href="javascript:;" title="编辑"><i class="Hui-iconfont Hui-iconfont-edit btn btn-primary-outline radius"></i></a> <a style="text-decoration:none" class="ml-5" onClick="article_del(this,'{$a_list[\'a_id\']}')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del2 btn btn-secondary-outline radius"></i></a></td>
+                <td class="f-14 td-manage"> <a style="text-decoration:none" class="ml-5" onClick="article_restore(this,'{$a_list[\'a_id\']}')" href="javascript:;" title="还原"><i class="Hui-iconfont Hui-iconfont-chexiao btn btn-primary-outline radius"></i></a> <a style="text-decoration:none" class="ml-5" onClick="article_del_completely(this,'{$a_list[\'a_id\']}')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del3 btn btn-secondary-outline radius"></i></a></td>
               </tr>
             </volist>
             </tbody>
@@ -138,30 +138,36 @@
             todayButton:true    //关闭选择今天按钮
         });
     });
-
-    /*文章-添加*/
-    function article_add(title,url){
-        var index = layer.open({
-            type: 2,
-            title: title,
-            content: url
+    /*文章-还原*/
+    function article_restore(obj,id) {
+        layer.confirm('确认要还原吗？',function(index){
+            $.ajax({
+                url:'{:U(\'Admin/Article/a_restore\')}',
+                data:{
+                    a_id : id,
+                },
+                type:'post',
+                cache:false,
+                dataType:'json',
+                success:function(data) {
+                    if(data.msg == "true" ){
+                        layer.msg('文章还原成功!',{icon:1,time:3000});
+                        window.location.reload();
+                    }else{
+                        layer.msg('文章还原异常!',{icon:1,time:3000});
+                    }
+                },
+                error : function() {
+                    layer.msg('文章还原异常!',{icon:1,time:3000});
+                }
+            });
         });
-        layer.full(index);
-    }
-    /*文章-编辑*/
-    function article_edit(title,url){
-        var index = layer.open({
-            type: 2,
-            title: title,
-            content: url
-        });
-        layer.full(index);
     }
     /*文章-删除*/
-    function article_del(obj,id){
+    function article_del_completely(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
-                url:'{:U(\'Admin/Article/del\')}',
+                url:'{:U(\'Admin/Article/del_completely\')}',
                 data:{
                     a_id : id,
                 },
@@ -170,14 +176,14 @@
                 dataType:'json',
                 success:function(data) {
                    if(data.msg == "true" ){
-                       layer.msg('删除成功!',{icon:1,time:3000});
+                       layer.msg('文章删除成功!',{icon:1,time:3000});
                        window.location.reload();
                    }else{
-                       layer.msg('删除异常!',{icon:1,time:3000});
+                       layer.msg('文章删除异常!',{icon:1,time:3000});
                    }
                 },
                 error : function() {
-                    layer.msg('删除异常!',{icon:1,time:3000});
+                    layer.msg('文章删除异常!',{icon:1,time:3000});
                 }
            });
         });

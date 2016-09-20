@@ -6,23 +6,19 @@
 <include file="public:head" />
 <body>
 <!-- scrollToTop -->
-
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
-
 <!-- page wrapper start -->
-
 <div class="page-wrapper">
     <include file="public:header_top" />
     <include file="public:header" />
     <!-- page-intro start-->
-    
     <div class="page-intro">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
-                        <li class="active">Blog</li>
+                        <li><i class="fa fa-home pr-10"></i><a href="{:U('Home/Index/index')}">Home</a></li>
+                        <li class="{:U('Home/Index/index')}">Blog</li>
                     </ol>
                 </div>
             </div>
@@ -36,53 +32,42 @@
                 <!-- main start -->
                 <div class="main col-md-8">
                     <!-- blogpost start -->
-                    <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                        <div class="blogpost-body">
-                            <div class="post-info">
-                                <span class="day">24</span>
-                                <span class="month">201608</span>
+                    <volist name="article_list" id="a_list" key="i">
+                        <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                            <div class="blogpost-body">
+                               <!-- <div class="post-info">
+                                    <span class="day">24</span>
+                                    <span class="month">{$a_list['a_add_time']}</span>
+                                </div>-->
+                                <div class="blogpost-content">
+                                    <header>
+                                        <h2 class="title"><a href="{:U('Home/Index/article',array('id'=>$a_list['a_id']))}">{$a_list['a_title']}</a></h2>
+                                        <div class="submitted">
+                                            <i class="fa fa-user pr-5"></i> by <a href="#">{$a_list['a_author']}</a>
+                                            <i class="fa fa-file-code-o pr-5"></i> <a href="#"><volist name="a_list['category_info']" id="ac_list" key="j">{$ac_list['ac_name']}</volist></a>
+                                            <i class="fa fa-calendar pr-5"></i> <a href="#">{$a_list['a_add_time']}</a>
+                                            <i class="fa  fa-eye pr-5"></i> <a href="#">22 views</a>
+                                            <i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a>
+                                        </div>
+                                    </header>
+                                    <p>
+                                        <if condition="$a_list['a_description']  eq  '' ">
+                                                   <php>echo strip_tags(mb_substr($a_list['a_content'] , 0 , 300,'utf-8')).'...';</php>
+                                            <else /> {$a_list['a_description']}...
+                                        </if>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="blogpost-content">
-                                <header>
-                                    <h2 class="title"><a href="{:U('Home/Index/article',array('id'=>8))}">我的第一篇博文</a></h2>
-                                    <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">haoshuai_it</a></div>
-                                </header>
-                                <p>自己搭建的Git服务器私有库，测试完毕，可以正常使用！[如何搭建自己的Git服务器] 既然可以正常clone、add、commit、push到远程git服务器，那么成功了，也不能及时看到效果。故想到， Git和SVN应该都有【钩子】hook…</p>
-                            </div>
-                        </div>
-                        <footer class="clearfix">
-                            <ul class="links pull-left">
-                                <li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li>
-                                <li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-                            </ul>
-                            <a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-                        </footer>
-                    </article>
+                            <footer class="clearfix">
+                                <ul class="links pull-left">
+                                    <li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
+                                </ul>
+                                <a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
+                            </footer>
+                        </article>
+                    </volist>
                     <!-- blogpost end -->
-                    <!-- blogpost start -->
-                    <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                        <div class="blogpost-body">
-                            <div class="post-info">
-                                <span class="day">11</span>
-                                <span class="month">08 2014</span>
-                            </div>
-                            <div class="blogpost-content">
-                                <header>
-                                    <h2 class="title"><a href="{:U('Home/Index/article',array('id'=>9))}">第二篇文章</a></h2>
-                                    <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">haoshuai_it</a></div>
-                                </header>
-                                <p>一次在本地开发环境遇到这样一个问题：apache废掉了，然后重新编译安装apache，需要配置FastCGI？php-fpm？apche+php-fpm？nginx+php-fpm？ 我去，这些是什么东东？于是不断去查找资料，现整理下来备用…</p>
-                            </div>
-                        </div>
-                        <footer class="clearfix">
-                            <ul class="links pull-left">
-                                <li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li>
-                                <li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-                            </ul>
-                            <a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-                        </footer>
-                    </article>
-                    <!-- blogpost end -->
+
                     <!-- pagination start -->
                     <ul class="pagination">
                         <li><a href="#"><<</a></li>
@@ -101,51 +86,6 @@
         </div>
     </section>
     <!-- main-container end -->
-
-    <!-- section start -->
-    
-    <div class="section gray-bg text-muted footer-top clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="owl-carousel clients">
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-1.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-2.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-3.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-4.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-5.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-6.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-7.png" alt=""></a>
-                        </div>
-                        <div class="client">
-                            <a href="#"><img src="__PUBLIC__/images/client-8.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                        <blockquote class="inline">
-                        <p class="margin-clear">个人技术博客，基于thinkphp开发.</p>
-                        <footer><cite title="Source Title">haoshuai_it </cite></footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- section end -->
-
     <include file="public:footer" />
 
 </div>
