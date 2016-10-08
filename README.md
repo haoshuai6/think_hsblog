@@ -5,7 +5,7 @@
 
 ## 系统特点
 
-*  基于ThinkPHP3.2.3 + Bootstrap 
+*  基于ThinkPHP3.2.3 + H-ui + H-ui.admin
 *  ....
 
 ## 内置功能

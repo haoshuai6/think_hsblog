@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <include file="public:head" />
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/datetimepicker/css/jquery.datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN_LIB__/datetimepicker/css/jquery.datetimepicker.css" />
 <style>
     .xdsoft_datetimepicker  .xdsoft_calendar td > div {
         padding-right:10px;
@@ -36,13 +36,14 @@
                 <th width="25">ID</th>
                 <th width="90">标题</th>
                 <th width="80">分类</th>
+                <th width="90">标签</th>
                 <th width="40">作者</th>
                 <th width="30">置顶</th>
                 <th width="30">原创</th>
                 <th width="30">评论</th>
-                <th width="50">浏览数</th>
+                <th width="30">浏览数</th>
                 <th width="75">发布时间</th>
-                <th width="50">状态</th>
+                <th width="40">状态</th>
                 <th width="80">操作</th>
             </tr>
             </thead>
@@ -56,6 +57,11 @@
                         <volist name="a_list['category_info']" id="ac_list" key="j">
                            <p class="btn btn-primary radius hs-btn-mar"> {$ac_list['ac_name']} <!--<if condition="$j lt count($a_list['category_info'])"> |</if> --></p>
                         </volist>
+                    </td>
+                    <td>
+                      <volist name="a_list['tag_info']" id="tag_list" key="k">
+                          <p class="btn btn-primary radius hs-btn-mar"> {$tag_list['ht_name']} <!--<if condition="$j lt count($a_list['category_info'])"> |</if> --></p>
+                      </volist>
                     </td>
                     <td>{$a_list['a_author']}</td>
                   <td>
@@ -98,7 +104,7 @@
     </div>
 </div>
 <include file="public:footer"/>
-<script type="text/javascript" src="__PUBLIC__/lib/datetimepicker/js/jquery.datetimepicker.min.js"></script>
+<script type="text/javascript" src="__ADMIN_LIB__/datetimepicker/js/jquery.datetimepicker.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $('.table-sort').dataTable({

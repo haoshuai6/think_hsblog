@@ -1,136 +1,116 @@
-<!DOCTYPE html>
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
 <include file="public:head" />
-<body>
-<!-- scrollToTop -->
-<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
-<!-- page wrapper start -->
-<div class="page-wrapper">
-    <include file="public:header_top" />
-    <include file="public:header" />
-    <!-- page-intro start-->
-    <div class="page-intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ol class="breadcrumb">
-                        <li><i class="fa fa-home pr-10"></i><a href="{:U('Home/Index/index')}">Home</a></li>
-                        <li class="{:U('Home/Index/index')}">内容页</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- page-intro end -->
-    <!-- main-container start -->
-    <section class="main-container">
+<div id="main-wrapper">
+    <include file="public:nav" />
 
-        <div class="container">
-            <div class="row">
-                <!-- main start -->
-                <div class="main col-md-8">
-                    <!-- page-title start -->
-                    <h1 class="page-title">{$article_info['a_title']}</h1>
-                    <!-- page-title end -->
-                    <!-- blogpost start -->
-                    <article class="clearfix blogpost full">
-                        <div class="blogpost-body">
-                            <div class="blogpost-content">
-                                <header>
-                                    <div class="submitted">
-                                        <i class="fa fa-user pr-5"></i> by <a href="#">{$article_info['a_author']}</a> |
-                                        <i class="fa fa-file-code-o pr-5"></i> <a href="#">PHP</a> |
-                                        <i class="fa fa-calendar pr-5"></i> <a href="#">{$article_info['a_add_time']}</a> |
-                                        <i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> |
-                                        <i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a>
-                                    </div>
-                                </header>
-                                <hr />
-                                {$article_info['a_content']}
-                            </div>
-                        </div>
-                        <footer class="clearfix">
-                            <ul class="links pull-left">
-                                <li>本文系HSBLOG原创，可自由转载、引用，但需署名作者且注明文章出处.</li>
-                                <li>请注明来自<a href="http://www.hsblogs.com" target="_blank" style="color: #981a05">HSBLOG</a> http://www.hsblogs.com</li>
-                            </ul>
-                        </footer>
+    <div id="container">
+        <!-- BEGIN HOME -->
+        <section id="home" class="home container">
+            <!--内容-->
+            <div class="content-wrap"><!--内容-->
+                <div class="content">
+                    <header class="news_header">
+                        <h2>欢迎来到异清轩技术博客</h2>
+                        <ul>
+                            <li>admin 发布于 2015-06-29</li>
+                            <li>栏目：<a href="" title="" target="_blank">网站前端</a></li>
+                            <li>来源：<a href="" title="" target="_blank">互联网</a></li>
+                            <li>共 <strong>2345</strong> 人围观 </li>
+                            <li><strong>123</strong> 个不明物体</li>
+                        </ul>
+                    </header>
+                    <article class="news_content">
+                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
+                        <p><img src="__HOME_IMAGES__/img2.jpg" alt="" title="" /></p>
+                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
+                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
+                        <p><img src="__HOME_IMAGES__/img3.jpg" alt="" title="" /></p>
+                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
+                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
+                        <p><img src="__HOME_IMAGES__/img1.jpg" alt="" title="" /></p>
+                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
                     </article>
-                    <!-- blogpost end -->
-                    <!-- comments start -->
-                    <div class="comments">
-                        <h2 class="title">这里有 3 条评论</h2>
-                        <!-- comment start -->
-                        <div class="comment clearfix">
-                            <div class="comment-avatar">
-                                <img src="__PUBLIC__/images/avatar.jpg" alt="avatar">
-                            </div>
-                            <div class="comment-content">
-                                <h3>搜寻你的样子</h3>
-                                <div class="comment-meta">By <a href="#">admin</a> | Today, 12:31</div>
-                                <div class="comment-body clearfix">
-                                    <p>请问p是什么方法？thinkphp没有这个方法，应该是自己定义的，能看一下这个方法么？ </p>
-                                    <a href="blog-post.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> 回复</a>
+                    <div class="reprint">转载请说明出处：<a href="" title="" target="_blank">异清轩技术博客</a> >> <a href="" title="" target="_blank">欢迎来到异清轩技术博客</a></div>
+                    <div class="zambia"><a href="javascript:;" name="zambia" rel=""><span class="glyphicon glyphicon-thumbs-up"></span> 赞（0）</a></div>
+                    <div class="tags news_tags">标签： <span data-toggle="tooltip" data-placement="bottom" title="查看关于 本站 的文章"><a href="">本站</a></span> <span data-toggle="tooltip" data-placement="bottom" title="查看关于 异清轩 的文章"><a href="">异清轩</a></span> </div>
+                    <nav class="page-nav"> <span class="page-nav-prev">上一篇<br />
+        <a href="" rel="prev">欢迎来到异清轩技术博客</a></span> <span class="page-nav-next">下一篇<br />
+        <a href="" rel="next">欢迎来到异清轩技术博客</a></span> </nav>
+                    <div class="content-block related-content visible-lg visible-md">
+                        <h2 class="title"><strong>相关推荐</strong></h2>
+                        <ul>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/logo.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img1.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img3.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img2.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img2.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img3.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img1.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/logo.jpg" alt="">
+                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="content-block comment">
+                        <h2 class="title"><strong>评论</strong></h2>
+                        <form action="comment.php" method="post" class="form-inline" id="comment-form">
+                            <div class="comment-title">
+                                <div class="form-group">
+                                    <label for="commentName">昵称：</label>
+                                    <input type="text" name="commentName" class="form-control" id="commentName" placeholder="异清轩">
+                                </div>
+                                <div class="form-group">
+                                    <label for="commentEmail">邮箱：</label>
+                                    <input type="email" name="commentEmail" class="form-control" id="commentEmail" placeholder="admin@ylsat.com">
                                 </div>
                             </div>
-                            <!-- comment start -->
-                            <div class="comment clearfix">
-                                <div class="comment-avatar">
-                                    <img src="__PUBLIC__/images/avatar.jpg" alt="avatar">
-                                </div>
-                                <div class="comment-content clearfix">
-                                    <h3>坐着的水</h3>
-                                    <div class="comment-meta">By <a href="#">admin</a> | Today, 12:31</div>
-                                    <div class="comment-body">
-                                        <p>我是用这个方法导入公司的考勤数据，当考勤记录只有100多条的时候，没啥问题，当考勤记录1000多条，就会报内存不足，用G查看发现解析excel很耗内存，大神是怎么解决的？</p>
-                                        <a href="blog-post.html" class="btn btn-gray more pull-right"><i class="fa fa-reply"></i> 回复</a>
+                            <div class="comment-form">
+                                <textarea placeholder="你的评论可以一针见血" name="commentContent"></textarea>
+                                <div class="comment-form-footer">
+                                    <div class="comment-form-text">请先 <a href="javascript:;">登录</a> 或 <a href="javascript:;">注册</a>，也可匿名评论 </div>
+                                    <div class="comment-form-btn">
+                                        <button type="submit" class="btn btn-default btn-comment">提交评论</button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- comment end -->
-                        </div>
-                        <!-- comment end -->
-                    </div>
-                    <!-- comments end -->
-                    <!-- comments form start -->
-                    <div class="comments-form">
-                        <h2 class="title">留下脚印</h2>
-                        <form role="form" id="comment-form">
-                            <div class="form-group has-feedback">
-                                <label for="name4">昵称</label>
-                                <input type="text" class="form-control" id="name4" placeholder="" name="name4" required>
-                                <i class="fa fa-user form-control-feedback"></i>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="subject4">邮箱</label>
-                                <input type="text" class="form-control" id="subject4" placeholder="" name="subject4" required>
-                                <i class="fa fa-envelope-o form-control-feedback"></i>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="message4">内容</label>
-                                <textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required></textarea>
-                                <i class="fa fa-pencil form-control-feedback"></i>
-                            </div>
-                            <input type="submit" value="提交" class="btn btn-default">
                         </form>
+                        <div class="comment-content">
+                            <ul>
+                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩编辑</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>令狐冲</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>任盈盈</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
+                            </ul>
+                        </div>
                     </div>
-                    <!-- comments form end -->
                 </div>
-                <!-- main end -->
-                <!-- sidebar start -->
-                <include file="public:sidebar" />
-
             </div>
-        </div>
-    </section>
-    <!-- main-container end -->
-    <include file="public:footer" />
+            <include file="public:sidebar" />
 
+        </section>
+        <!-- END HOME -->
+        <!--/返回顶部-->
+        <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
+    </div>
 </div>
-<!-- page-wrapper end -->
-<include file="public:javascript" />
-</body>
-</html>
+
+<include file="public:footer" />

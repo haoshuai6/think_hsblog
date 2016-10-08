@@ -1,94 +1,45 @@
-<!--<aside class="col-md-3 col-md-offset-1">-->
-<aside class="col-md-4">
-    <div class="sidebar">
-        <div class="block clearfix">
-            <h3 class="title">热门标签</h3>
-            <div class="separator"></div>
-            <div class="tags-cloud">
-                <div class="tag">
-                    <a href="#">energy</a>
-                </div>
-                <div class="tag">
-                    <a href="#">business</a>
-                </div>
-                <div class="tag">
-                    <a href="#">food</a>
-                </div>
-                <div class="tag">
-                    <a href="#">fashion</a>
-                </div>
-                <div class="tag">
-                    <a href="#">finance</a>
-                </div>
-                <div class="tag">
-                    <a href="#">culture</a>
-                </div>
-                <div class="tag">
-                    <a href="#">health</a>
-                </div>
-                <div class="tag">
-                    <a href="#">sports</a>
-                </div>
-                <div class="tag">
-                    <a href="#">life style</a>
-                </div>
-                <div class="tag">
-                    <a href="#">books</a>
-                </div>
-            </div>
-        </div>
-        <!--<div class="block clearfix">
-            <h3 class="title">最新评论</h3>
-            <div class="separator"></div>
-            <ul class="tweets">
-                <li style="border-bottom: dashed 1px #ccc;">
-                    <img src="/Public/Img/Portrait/20.jpg" class="img-circle">在
-                    <p><a href="#">ThinkPHP3.2.3实现路由功能的[坑]</a> 挺好的，不错呀挺好的，不错呀挺好的，不错呀挺好的，不错呀挺好的，不错呀 <a href="#">http://www.hsblogs.com</a>.</p><span>16 hours ago</span>
-                </li>
-                <li>
-
-                    <p><a href="#">@lorem</a> 风格清新脱俗，典雅 <a href="#">http://www.hsblogs.com</a>.</p><span>16 hours ago</span>
-                </li>
-            </ul>
-        </div>-->
-
-        <div class="block clearfix">
-            <h3 class="title">随机推荐</h3>
-            <div class="separator"></div>
-            <div class="image-box">
-                <div class="image-box-body">
-                    <ul class="list-icons">
-                        <li><i class="fa fa-list pr-10"></i> 随机文章1</li>
-                        <li><i class="fa fa-list pr-10"></i> 随机推荐</li>
-                        <li><i class="fa fa-list pr-10"></i> 随机推荐2 </li>
-                        <li><i class="fa fa-list pr-10"></i> 随机推荐撒旦法</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="block clearfix">
-            <h3 class="title">友情链接</h3>
-            <div class="separator"></div>
-            <div class="image-box">
-            <div class="image-box-body">
-                <ul class="list-icons">
-                    <li><i class="fa fa-link pr-10"></i> 前端博客 </li>
-                    <li><i class="fa fa-link pr-10"></i> 随机链接</li>
-                    <li><i class="fa fa-link pr-10"></i> 随机推链接2 </li>
-                    <li><i class="fa fa-link pr-10"></i> 随机推链接撒旦法</li>
-                </ul>
-            </div></div>
-        </div>
-
-        <div class="block clearfix">
-            <form role="search">
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <i class="fa fa-search form-control-feedback"></i>
-                </div>
-            </form>
-        </div>
+<aside class="sidebar visible-lg"><!--右侧-->
+    <div class="sentence"> <strong>每日一句</strong>
+        <h2>2015年11月1日 星期日</h2>
+        <p>你是我人生中唯一的主角，我却只能是你故事中的一晃而过得路人甲。</p>
+    </div>
+    <div id="search" class="sidebar-block search" role="search">
+        <h2 class="title"><strong>搜索</strong></h2>
+        <form class="navbar-form" action="search.php" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" size="35" placeholder="请输入关键字">
+          <span class="input-group-btn">
+          <button class="btn btn-default btn-search" type="submit">搜索</button>
+          </span> </div>
+        </form>
+    </div>
+    <div class="sidebar-block recommend">
+        <h2 class="title"><strong>热门推荐</strong></h2>
+        <ul>
+            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+        </ul>
+    </div>
+    <div class="sidebar-block comment">
+        <h2 class="title"><strong>最新评论</strong></h2>
+        <ul>
+            <li data-toggle="tooltip" data-placement="top" title="站长的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+          欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+            <li data-toggle="tooltip" data-placement="top" title="读者墙上的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+          欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+            <li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+          欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+            <li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+          欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+            <li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+          欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+        </ul>
     </div>
 </aside>
-<!-- sidebar end -->
+<!--/右侧-->
+<footer class="footer">POWERED BY &copy;<a href="http://www.htmlsucai.com">异清轩 YLSAT.COM</a> ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;<span>
+    <a href="http://www.htmlsucai.com" target="_blank">豫ICP备15026801号-1</a></span> <span style="display:none"><a href="">网站统计</a></span>
+</footer>

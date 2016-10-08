@@ -5,11 +5,12 @@ use Common\Controller\AdminBaseController;
  * 后台首页
  */
 class ArticleController extends AdminBaseController{
-    private $db_Articles,$db_Article_category,$db_Tag;
+    private $db_Articles,$db_Article_category,$db_Tag,$db_Article_tag;
     public function __construct(){
         parent::__construct();
         $this->db_Tag = M ('Tag');
         $this->db_Articles = D ('Articles');
+        $this->db_Article_tag = D ('Article_tag');
         $this->db_Article_category = D ('Article_category');
 
     }
@@ -19,9 +20,22 @@ class ArticleController extends AdminBaseController{
         $article_list = $this->db_Articles->where($show_array)->select();
         if(!empty($article_list) && is_array($article_list)){
             foreach ($article_list as $k => $v){
-                $ac_array['ac_id'] = array('in',$v['a_category_id']);
+                //分类
+                $ac_array['ac_id'] = array('eq',$v['a_category_id']);
                 $category_info = $this->db_Article_category->where($ac_array)->select();
                 $article_list[$k]['category_info'] =  $category_info;
+                //标签
+                $tag_array['at_article_id'] = $v['a_id'];
+                $tag_id_list = $this->db_Article_tag->where($tag_array)->select();
+                $tag_id_str = '';
+                foreach ($tag_id_list as $key => $val){
+                    $tag_id_str .= $val['at_tag_id'].',';
+                }
+                $tag_id_str =  rtrim($tag_id_str, ',');
+
+                $tag_list_array['ht_id'] = array('in',$tag_id_str);
+                $tag_list = $this->db_Tag->where($tag_list_array)->select();
+                $article_list[$k]['tag_info'] =  $tag_list;
             }
         }
         $category_list = $this->db_Article_category->select();
@@ -39,25 +53,21 @@ class ArticleController extends AdminBaseController{
                 array('a_content','require','文章内容必须'),
             );
             $article = I('post.');
-            $ac_str = '';
             $article['a_title'] = $article['title'];
             $article['a_is_top'] = $article['top'];
             $article['a_author'] = $article['author'];
             $article['a_state'] = $article['state'];
             $article['a_keywords'] = $article['keywords'];
+            $article['a_description'] = $article['description'];
+
             $article['a_is_comment'] = $article['comment'];
             $article['a_is_original'] = $article['original'];
-            $article['a_category_id'] = '';
-            $ac_array = $article['select_ac'];
-            if(!empty($ac_array) && is_array($ac_array)){
-                foreach ($ac_array as $k => $v){
-                    $ac_str .= $v .',';
-                }
-                $ac_str =  rtrim($ac_str, ',');
-                $article['a_category_id'] = $ac_str;
-            }
+
+            $article['a_category_id'] = $article['select_ac'];
+
             $article['a_is_original'] = $article['original'];
             $article['a_content'] = htmlspecialchars_decode($article['content']);
+
 
             //获取文章内容中的图片 加水印
             $image_path = get_ueditor_image_path($article['a_content']);
@@ -73,6 +83,15 @@ class ArticleController extends AdminBaseController{
             if ($this->db_Articles->validate($rules)->create($article)){
                 $result = $this->db_Articles->add($article);
                 if ($result) {
+                    $tag_array = $article['select_tag'];
+                    if(!empty($tag_array) && is_array($tag_array)){
+                        $add_array = '';
+                        foreach ($tag_array as $k => $v){
+                            $add_array['at_article_id']= $result;
+                            $add_array['at_tag_id']= $v;
+                            $this->db_Article_tag->add($add_array);
+                        }
+                    }
                     $this->success("文章发布成功",U('Admin/Article/show'),'',1);
                 } else {
                     $this->error("文章发布失败",U('Admin/Article/show'),'',1);
@@ -84,6 +103,9 @@ class ArticleController extends AdminBaseController{
             //文章分类
             $category_list = $this->db_Article_category->select();
             $this->assign("category_list",$category_list);
+            //文章标签
+            $tag_list = $this->db_Tag->select();
+            $this->assign("tag_list",$tag_list);
             $this->display();
         }
     }
@@ -101,24 +123,19 @@ class ArticleController extends AdminBaseController{
                 $this->error("无法获取原文章",U('Admin/Article/show'),'',1);
             }
             $article_edit = I('post.');
-            $ac_str = '';
+
             $article_edit['a_title'] = $article_edit['title'];
             $article_edit['a_is_top'] = $article_edit['top'];
             $article_edit['a_author'] = $article_edit['author'];
             $article_edit['a_state'] = $article_edit['state'];
             $article_edit['a_keywords'] = $article_edit['keywords'];
+            $article_edit['a_description'] = $article_edit['description'];
+
             $article_edit['a_is_comment'] = $article_edit['comment'];
             $article_edit['a_is_original'] = $article_edit['original'];
-            $ac_array = $article_edit['select_ac'];
-            if(!empty($ac_array) && is_array($ac_array)){
-                foreach ($ac_array as $k => $v){
-                    $ac_str .= $v .',';
-                }
-                $ac_str =  rtrim($ac_str, ',');
-            }
-            if($article_info['a_category_id'] != $ac_str){
-                $article_edit['a_category_id'] = $ac_str;
-            }
+
+            $article_edit['a_category_id'] = $article_edit['select_ac'];
+
             $article_edit['a_is_original'] = $article_edit['original'];
             $article_edit['a_content'] =  htmlspecialchars_decode($article_edit['content']);
             //获取文章内容中的图片 加水印
@@ -134,6 +151,16 @@ class ArticleController extends AdminBaseController{
             if ($this->db_Articles->validate($rules)->create($article_edit)){
                 $result = $this->db_Articles->where(array('a_id'=>$article_id))->save($article_edit);
                 if ($result !== false) {
+                    $this->db_Article_tag->where(array('at_article_id'=>$article_id))->delete();
+                    $tag_array = $article_edit['select_tag'];
+                    if(!empty($tag_array) && is_array($tag_array)){
+                        $edit_array = '';
+                        foreach ($tag_array as $k => $v){
+                            $edit_array['at_article_id'] = $article_id;
+                            $edit_array['at_tag_id'] = $v;
+                            $this->db_Article_tag->add($edit_array);
+                        }
+                    }
                     $this->success("修改成功",U('Admin/Article/show'),'',1);
                 } else {
                     $this->error("修改失败",U('Admin/Article/show'),'',1);
@@ -153,6 +180,18 @@ class ArticleController extends AdminBaseController{
             $category_list = $this->db_Article_category->select();
             $this->assign("category_list",$category_list);
             $this->assign("article_info",$article_info);
+            //文章标签
+            $tag_list = $this->db_Tag->select();
+            $this->assign("tag_list",$tag_list);
+            //已经选中的标签
+            $tag_list_info = $this->db_Article_tag->where(array('at_article_id'=>$a_id))->select();
+            $tag_list_select = '';
+            foreach ($tag_list_info as $k => $v){
+                $tag_list_select .= $v['at_tag_id'].',';
+            }
+            $tag_list_select =  rtrim($tag_list_select, ',');
+    
+            $this->assign("tag_list_select",$tag_list_select);
             $this->display();
         }
     }
@@ -310,7 +349,7 @@ class ArticleController extends AdminBaseController{
             $tag_edit = I('post.');
             $tag_edit['ht_name'] = $tag_edit['name'];
             $tag_edit['ht_sort'] = intval($tag_edit['sort']);
-            if ($this->db_Article_category->validate($rules)->create($tag_edit)){
+            if ($this->db_Tag->validate($rules)->create($tag_edit)){
                 $result = $this->db_Tag->where(array('ht_id' => $tag_id))->save($tag_edit);
                 if ($result !== false) {
                     $this->success("标签修改成功", U('Admin/Article/tag_show'), '', 1);
@@ -318,7 +357,7 @@ class ArticleController extends AdminBaseController{
                     $this->error("标签修改失败", U('Admin/Article/tag_show'), '', 1);
                 }
             }else {
-                $this->error($this->db_Article_category->getError(),'',1);
+                $this->error($this->db_Tag->getError(),'',1);
             }
         }else {
             $ht_id = I('get.ht_id');
@@ -342,7 +381,7 @@ class ArticleController extends AdminBaseController{
             $tag= I('post.');
             $tag['ht_name'] = $tag['name'];
             $tag['ht_sort'] = intval($tag['sort']);
-            if ($this->db_Article_category->validate($rules)->create($tag)){
+            if ($this->db_Tag->validate($rules)->create($tag)){
                 $result = $this->db_Tag->add($tag);
                 if ($result) {
                     $this->success("标签添加成功", U('Admin/Article/tag_show'), '', 1);
@@ -350,7 +389,7 @@ class ArticleController extends AdminBaseController{
                     $this->error("标签添加失败", U('Admin/Article/tag_show'), '', 1);
                 }
             }else {
-                $this->error($this->db_Article_category->getError(),'',1);
+                $this->error($this->db_Tag->getError(),'',1);
             }
         }else{
             $this->display();

@@ -2,7 +2,7 @@
 <html>
 <head>
     <include file="public:head" />
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/labelauty/css/jquery-labelauty.css" />
+    <link rel="stylesheet" type="text/css" href="__ADMIN_LIB__/labelauty/css/jquery-labelauty.css" />
     <style>
         ul { list-style-type: none;}
         li { display: inline-block;}
@@ -24,7 +24,17 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <ul class="dowebok">
                     <volist name="category_list" id="ac_list">
-                        <li><input type="checkbox" name="select_ac[]" data-labelauty="{$ac_list['ac_name']}" value="{$ac_list['ac_id']}"></li>
+                        <li><input type="radio" name="select_ac" data-labelauty="{$ac_list['ac_name']}" value="{$ac_list['ac_id']}"></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标签：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <ul class="dowebok">
+                    <volist name="tag_list" id="tag_list">
+                        <li><input type="checkbox" name="select_tag[]" data-labelauty="{$tag_list['ht_name']}" value="{$tag_list['ht_id']}"></li>
                     </volist>
                 </ul>
             </div>
@@ -33,6 +43,13 @@
             <label class="form-label col-xs-4 col-sm-2">关键词：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value=""  id="keywords" name="keywords">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章描述：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="description" cols="" rows="" class="textarea"  placeholder="最多300个字符" onKeyUp="textarealength(this,300)"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/300</p>
             </div>
         </div>
         <div class="row cl">
@@ -94,10 +111,10 @@
 </article>
 <include file="public:footer" />
 
-<script type="text/javascript" src="__PUBLIC__/lib/labelauty/js/jquery-labelauty.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" src="__PUBLIC__/lib/ueditor/ueditor.all.min.js"> </script>
-<script type="text/javascript" src="__PUBLIC__/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="__ADMIN_LIB__/labelauty/js/jquery-labelauty.js"></script>
+<script type="text/javascript" src="__ADMIN_LIB__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN_LIB__/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN_LIB__/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
    $(function () {
        var ue = UE.getEditor('editor');

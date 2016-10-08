@@ -15,16 +15,19 @@ return array(
     'TOKEN_NAME'    =>    '__HSBLOGS__',    // 令牌验证的表单隐藏字段名称，默认为__hash__
     'TOKEN_TYPE'    =>    'md5',  //令牌哈希验证规则 默认为MD5
     'TOKEN_RESET'   =>    true,  //令牌验证出错后重置令牌 
-    //public为公共资源文件夹
-    //前台、themes/default/Home/public
-    //后台、themes/default/Admin/public
-    'TMPL_PARSE_STRING'     =>  array(                        //定义常用路径
-        '__HOME_CSS__'      =>  __ROOT__.trim(TMPL_PATH,'.').'Home/public/css',
-        '__HOME_JS__'       =>  __ROOT__.trim(TMPL_PATH,'.').'Home/public/js',
-        '__HOME_IMAGE__'    =>  __ROOT__.trim(TMPL_PATH,'.').'Home/public/image',
-        '__ADMIN_CSS__'     =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/css',
-        '__ADMIN_JS__'      =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/js',
-        '__ADMIN_IMAGE__'   =>  __ROOT__.trim(TMPL_PATH,'.').'Admin/public/image',
+    //static为静态资源文件夹
+    'TMPL_PARSE_STRING'     =>  array(
+        '__HOME_CSS__'      =>  __ROOT__.'/static/home/css',
+        '__HOME_JS__'       =>  __ROOT__.'/static/home/js',
+        '__HOME_IMAGES__'   =>  __ROOT__.'/static/home/images',
+        
+        '__ADMIN_CSS__'     =>  __ROOT__.'/static/admin/css',
+        '__ADMIN_JS__'      =>  __ROOT__.'/static/admin/js',
+        '__ADMIN_LIB__'     =>  __ROOT__.'/static/admin/lib',
+        '__ADMIN_IMAGES__'  =>  __ROOT__.'/static/admin/images',
+        '__ADMIN_UI_CORE__' =>  __ROOT__.'/static/admin/ui-core',
+        '__ADMIN_PLUGINS__' =>  __ROOT__.'/static/admin/plugins',
+
     ),
     'ARTICLE_RECYCLE'   =>    '2', //文章放入回收站的标志
     'ARTICLE_NORMAL'   =>    '1',  //文章正常显示状态

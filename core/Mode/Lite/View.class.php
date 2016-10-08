@@ -141,7 +141,7 @@ class View {
             '__SELF__'      =>  __SELF__,       // 当前页面地址
             '__CONTROLLER__'=>  __CONTROLLER__,
             '__URL__'       =>  __CONTROLLER__,
-            '__PUBLIC__'    =>  __ROOT__.'/public',// 公共目录
+            '__PUBLIC__'    =>  __ROOT__.'/static/public',// 公共目录by haoshuai_it
  
         );
         // 允许用户自定义模板的字符串替换
