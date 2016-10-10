@@ -7,7 +7,7 @@ return array(
       new:  Home/Index_inde.html
    */
     'TMPL_FILE_DEPR'    =>  '_',
-    'URL_MODEL'         => 0,
+    'URL_MODEL'    => 2,
     
     'MODULE_ALLOW_LIST'     =>  array ('Home','Admin'),
     'LOAD_EXT_CONFIG'       =>  'db,systemconfig',//加载网站设置文件//数据库配置文件
@@ -17,9 +17,14 @@ return array(
     'TOKEN_RESET'   =>    true,  //令牌验证出错后重置令牌 
     //static为静态资源文件夹
     'TMPL_PARSE_STRING'     =>  array(
-        '__HOME_CSS__'      =>  __ROOT__.'/static/home/css',
+        /*default*/
+        /*'__HOME_CSS__'    =>  __ROOT__.'/static/home/css',
         '__HOME_JS__'       =>  __ROOT__.'/static/home/js',
-        '__HOME_IMAGES__'   =>  __ROOT__.'/static/home/images',
+        '__HOME_IMAGES__'   =>  __ROOT__.'/static/home/images',*/
+        /*thinkblog*/
+        '__HOME_CSS__'      =>  __ROOT__.'/static/blog/css',
+        '__HOME_JS__'       =>  __ROOT__.'/static/blog/js',
+        '__HOME_IMAGES__'   =>  __ROOT__.'/static/blog/images',
         
         '__ADMIN_CSS__'     =>  __ROOT__.'/static/admin/css',
         '__ADMIN_JS__'      =>  __ROOT__.'/static/admin/js',

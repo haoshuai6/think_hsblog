@@ -9,58 +9,51 @@
             <div class="content-wrap"><!--内容-->
                 <div class="content">
                     <header class="news_header">
-                        <h2>欢迎来到异清轩技术博客</h2>
+                        <h2>{$article_info['a_title']}</h2>
                         <ul>
-                            <li>admin 发布于 2015-06-29</li>
-                            <li>栏目：<a href="" title="" target="_blank">网站前端</a></li>
-                            <li>来源：<a href="" title="" target="_blank">互联网</a></li>
+                            <li>{$article_info['a_author']}  发布于 {$article_info['a_add_time']}</li>
+                            <li>栏目：<a href="" title="" target="_blank">分类</a></li>
+                            <li>标签：<a href="" title="" target="_blank">标签</a></li>
                             <li>共 <strong>2345</strong> 人围观 </li>
                             <li><strong>123</strong> 个不明物体</li>
                         </ul>
                     </header>
                     <article class="news_content">
-                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
-                        <p><img src="__HOME_IMAGES__/img2.jpg" alt="" title="" /></p>
-                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
-                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
-                        <p><img src="__HOME_IMAGES__/img3.jpg" alt="" title="" /></p>
-                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
-                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
-                        <p><img src="__HOME_IMAGES__/img1.jpg" alt="" title="" /></p>
-                        <p>欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</p>
+                        {$article_info['a_content']}
                     </article>
-                    <div class="reprint">转载请说明出处：<a href="" title="" target="_blank">异清轩技术博客</a> >> <a href="" title="" target="_blank">欢迎来到异清轩技术博客</a></div>
+                    <div class="reprint">转载请说明出处：<a href="" title="" target="_blank">HSBLOG技术博客</a> >> <a href="{:U('Home/Index/article',array('id'=>$article_info['a_id']))}" title="" target="_blank">{$article_info['a_title']}</a></div>
                     <div class="zambia"><a href="javascript:;" name="zambia" rel=""><span class="glyphicon glyphicon-thumbs-up"></span> 赞（0）</a></div>
-                    <div class="tags news_tags">标签： <span data-toggle="tooltip" data-placement="bottom" title="查看关于 本站 的文章"><a href="">本站</a></span> <span data-toggle="tooltip" data-placement="bottom" title="查看关于 异清轩 的文章"><a href="">异清轩</a></span> </div>
-                    <nav class="page-nav"> <span class="page-nav-prev">上一篇<br />
-        <a href="" rel="prev">欢迎来到异清轩技术博客</a></span> <span class="page-nav-next">下一篇<br />
-        <a href="" rel="next">欢迎来到异清轩技术博客</a></span> </nav>
+                    <div class="tags news_tags">标签： <span data-toggle="tooltip" data-placement="bottom" title="查看关于 本站 的文章"><a href="">本站</a></span> <span data-toggle="tooltip" data-placement="bottom" title="查看关于 HSBLOG 的文章"><a href="">HSBLOG</a></span> </div>
+                    <nav class="page-nav">
+                        <span class="page-nav-prev">上一篇<br /><a href="{:U('Home/Index/article',array('id'=>$article_info['a_id'] - 1))}" rel="prev">欢迎来到HSBLOG技术博客</a></span>
+                        <span class="page-nav-next">下一篇<br /><a href="{:U('Home/Index/article',array('id'=>$article_info['a_id'] + 1))}" rel="next">欢迎来到HSBLOG技术博客</a></span>
+                    </nav>
                     <div class="content-block related-content visible-lg visible-md">
                         <h2 class="title"><strong>相关推荐</strong></h2>
                         <ul>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/logo.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img1.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img3.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img2.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img2.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img3.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img1.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                             <li><a target="_blank" href=""><img src="__HOME_IMAGES__/logo.jpg" alt="">
-                                <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
                             </a></li>
                         </ul>
                     </div>
@@ -70,11 +63,11 @@
                             <div class="comment-title">
                                 <div class="form-group">
                                     <label for="commentName">昵称：</label>
-                                    <input type="text" name="commentName" class="form-control" id="commentName" placeholder="异清轩">
+                                    <input type="text" name="commentName" class="form-control" id="commentName" placeholder="HSBLOG">
                                 </div>
                                 <div class="form-group">
                                     <label for="commentEmail">邮箱：</label>
-                                    <input type="email" name="commentEmail" class="form-control" id="commentEmail" placeholder="admin@ylsat.com">
+                                    <input type="email" name="commentEmail" class="form-control" id="commentEmail" placeholder="haoshuai_it@163.com">
                                 </div>
                             </div>
                             <div class="comment-form">
@@ -89,16 +82,16 @@
                         </form>
                         <div class="comment-content">
                             <ul>
-                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩编辑</strong> (2015-10-18) 说：<br />
-              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>令狐冲</strong> (2015-10-18) 说：<br />
-              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>任盈盈</strong> (2015-10-18) 说：<br />
-              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
+              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG编辑</strong> (2015-10-18) 说：<br />
+              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>令狐冲</strong> (2015-10-18) 说：<br />
+              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>任盈盈</strong> (2015-10-18) 说：<br />
+              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
+              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
                             </ul>
                         </div>
                     </div>

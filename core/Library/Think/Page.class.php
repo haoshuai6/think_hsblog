@@ -74,7 +74,7 @@ class Page{
      * 组装分页链接 by haoshuai_it 20160921
      * @return string
      */
-    public function show() {
+    public function show_s() {
         if(0 == $this->totalRows) return '';
 
         /* 生成URL */
@@ -143,10 +143,11 @@ class Page{
         return "{$page_str}";
     }
     /**
-     * 组装分页链接
+     * 组装分页链接 by haoshuai_it 20161010
+     * return 去掉两端的div
      * @return string
      */
-    public function show_old() {
+    public function show() {
         if(0 == $this->totalRows) return '';
 
         /* 生成URL */
@@ -212,6 +213,6 @@ class Page{
             array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
             array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
             $this->config['theme']);
-        return "<div>{$page_str}</div>";
+        return "{$page_str}";
     }
 }

@@ -10,8 +10,8 @@ define('APP_PATH','./application/');
 // 定义缓存目录
 define('RUNTIME_PATH','./data/runtime/');
 // 定义模板主题
-define("DEFAULT_THEME","default");
-//define("DEFAULT_THEME","crystal");
+//define("DEFAULT_THEME","default");
+define("DEFAULT_THEME","thinkhsblog");
 // 定义模板文件默认目录
 define("TMPL_PATH","./themes/".DEFAULT_THEME."/");
 // 引入ThinkPHP入口文件

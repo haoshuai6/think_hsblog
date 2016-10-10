@@ -1101,8 +1101,9 @@ textarea::-webkit-scrollbar-thumb {
 	clear: both;
 	color: #AAA;
 	position: relative;
-	margin-left: 215px;
-	margin-right: 20px;
+	/*margin-left: 215px;*/
+	/*margin-right: 20px;*/
+	text-align: center;
 	padding: 20px 0 30px 20px;
 	border-top: 2px solid #eee;
 	font-size: 12px;
