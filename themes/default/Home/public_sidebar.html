@@ -1,46 +1,123 @@
-<aside class="sidebar visible-lg"><!--右侧-->
-    <div class="sentence"> <strong>每日一句</strong>
-        <h2>2015年11月1日 星期日</h2>
-        <p>你是我人生中唯一的主角，我却只能是你故事中的一晃而过得路人甲。</p>
+<aside class="sidebar">
+    <div class="fixed">
+        <div class="widget widget-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">博客公告</a></li>
+                <li role="presentation"><a href="#centre" aria-controls="centre" role="tab" data-toggle="tab">会员中心</a></li>
+                <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">联系我们</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane notice active" id="notice">
+                    <ul>
+                        <li>
+                            <time datetime="2016-01-04">01-04</time>
+                            <a href="" target="_blank">HSBLOG博客上线了</a>
+                        </li>
+                        <li>
+                            <time datetime="2016-01-04">01-04</time>
+                            <a target="_blank" href="">HSBLOG原博客地址</a>
+                        </li>
+                        <li>
+                            <time datetime="2016-01-04">01-04</time>
+                            <a target="_blank" href="">本博客公告3</a>
+                        </li>
+                        <li>
+                            <time datetime="2016-01-04">01-04</time>
+                            <a target="_blank" href="">本博客公告4</a>
+                        </li>
+                        <li>
+                            <time datetime="2016-01-04">01-04</time>
+                            <a target="_blank" href="">本博客公告5</a>
+                        </li>
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane centre" id="centre">
+                    <php> if(isset($_SESSION['user_name'])){ </php>
+                        <li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">{$Think.session.user_name} <i class="Hui-iconfont">&#xe6d5;</i></a>
+                            <ul class="dropDown-menu menu radius box-shadow">
+                                <li><a href="#">个人信息</a></li>
+                                <li><a href="{:U('Login/logout')}">退出</a></li>
+                            </ul>
+                        </li>
+                    <php> }else{ $_SESSION['hsblog_admin'] = null;</php>
+                            <h4>需要登录才能进入会员中心</h4>
+                            <p> <a data-toggle="modal" data-target="#loginModal" class="btn btn-primary">立即登录</a> <a href="javascript:;" class="btn btn-default">现在注册</a> </p>
+                            <!--<script>  location.href="{:U('Admin/login/login')}" </script>-->
+                    <php> } </php>
+
+                </div>
+                <div role="tabpanel" class="tab-pane contact" id="contact">
+                    <h2>Email:<br />
+                        <a href="mailto:haoshuai_it@163.com" data-toggle="tooltip" data-placement="bottom" title="haoshuai_it@163.com">haoshuai_it@163.com</a></h2>
+                </div>
+            </div>
+        </div>
+        <div class="widget widget_search">
+            <form class="navbar-form" action="/Search" method="post">
+                <div class="input-group">
+                    <input type="text" name="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-search" name="search" type="submit">搜索</button>
+                    </span>
+                </div>
+            </form>
+        </div>
     </div>
-    <div id="search" class="sidebar-block search" role="search">
-        <h2 class="title"><strong>搜索</strong></h2>
-        <form class="navbar-form" action="search.php" method="post">
-            <div class="input-group">
-                <input type="text" class="form-control" size="35" placeholder="请输入关键字">
-          <span class="input-group-btn">
-          <button class="btn btn-default btn-search" type="submit">搜索</button>
-          </span> </div>
-        </form>
+    <div class="widget widget_sentence">
+        <h3>时光飞逝</h3>
+        <div class="widget-sentence-content">
+            <h4>2016年01月05日星期二</h4>
+            <p>Do not let what you cannot do interfere with what you can do.<br />
+                别让你不能做的事妨碍到你能做的事。（John Wooden）</p>
+        </div>
     </div>
-    <div class="sidebar-block recommend">
-        <h2 class="title"><strong>热门推荐</strong></h2>
+    <div class="widget widget_hot">
+        <h3>热门文章</h3>
         <ul>
-            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">HSBLOG技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">HSBLOG技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">HSBLOG技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">HSBLOG技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-            <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text">HSBLOG技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-        </ul>
-    </div>
-    <div class="sidebar-block comment">
-        <h2 class="title"><strong>最新评论</strong></h2>
-        <ul>
-            <li data-toggle="tooltip" data-placement="top" title="站长的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-          欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-            <li data-toggle="tooltip" data-placement="top" title="读者墙上的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-          欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-            <li data-toggle="tooltip" data-placement="top" title="HSBLOG技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-          欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-            <li data-toggle="tooltip" data-placement="top" title="HSBLOG技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-          欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-            <li data-toggle="tooltip" data-placement="top" title="HSBLOG技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/icon/icon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-          欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+            <li><a href=""><span class="thumbnail"><img class="thumb" data-original="__HOME_IMAGES__/excerpt.jpg" src="__HOME_IMAGES__/excerpt.jpg" alt=""></span><span class="text">php如何判断一个日期的格式是否正确</span><span class="muted"><i class="glyphicon glyphicon-time"></i> 2016-1-4 </span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i> 120</span></a></li>
+            <li><a href=""><span class="thumbnail"><img class="thumb" data-original="__HOME_IMAGES__/excerpt.jpg" src="__HOME_IMAGES__/excerpt.jpg" alt=""></span><span class="text">php如何判断一个日期的格式是否正确</span><span class="muted"><i class="glyphicon glyphicon-time"></i> 2016-1-4 </span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i> 120</span></a></li>
+            <li><a href=""><span class="thumbnail"><img class="thumb" data-original="__HOME_IMAGES__/excerpt.jpg" src="__HOME_IMAGES__/excerpt.jpg" alt=""></span><span class="text">php如何判断一个日期的格式是否正确</span><span class="muted"><i class="glyphicon glyphicon-time"></i> 2016-1-4 </span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i> 120</span></a></li>
+            <li><a href=""><span class="thumbnail"><img class="thumb" data-original="__HOME_IMAGES__/excerpt.jpg" src="__HOME_IMAGES__/excerpt.jpg" alt=""></span><span class="text">php如何判断一个日期的格式是否正确</span><span class="muted"><i class="glyphicon glyphicon-time"></i> 2016-1-4 </span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i> 120</span></a></li>
+            <li><a href=""><span class="thumbnail"><img class="thumb" data-original="__HOME_IMAGES__/excerpt.jpg" src="__HOME_IMAGES__/excerpt.jpg" alt=""></span><span class="text">php如何判断一个日期的格式是否正确</span><span class="muted"><i class="glyphicon glyphicon-time"></i> 2016-1-4 </span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i> 120</span></a></li>
         </ul>
     </div>
 </aside>
-<!--/右侧-->
 <footer class="footer">
-    <span>&copy; 2016 <a href=""> www.hsblogs.com All Rights Reserved.</a></span><span> <a href="" target="_blank" rel="nofollow">鲁ICP备16002528号-1</a> &nbsp; <a href="sitemap.xml" target="_blank" class="sitemap">网站地图</a></span>
-
+    <div class="container">
+        <p>&copy; 2016 <a href=""> www.hsblogs.com All Rights Reserved.</a></p><p> <a href="" target="_blank" rel="nofollow">鲁ICP备16002528号-1</a> &nbsp; <a href="sitemap.xml" target="_blank" class="sitemap">网站地图</a></p>
+    </div>
+    <div id="gotop"><a class="gotop"></a></div>
 </footer>
+
+<!--登录注册模态框-->
+<div class="modal fade user-select" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{:U('Home/Login/login')}" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="loginModalLabel">登录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="loginModalUserNmae">用户名</label>
+                        <input type="text" class="form-control" id="loginModalUserNmae" name="name"  placeholder="请输入用户名" autofocus maxlength="15" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginModalUserPwd">密码</label>
+                        <input type="password" class="form-control" id="loginModalUserPwd" name="passwd"  placeholder="请输入密码" maxlength="18" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginModalVerify" style="display: block;">验证码</label>
+                        <input class="form-control" type="text" placeholder="验证码" id="loginModalVerify"  name="verify"  style="width:150px;display: inline-block" autocomplete="off" required>
+                        <img src="{:U('Admin/Login/showVerify')}" width="40%" title="点击刷新" onclick="this.src+='&'+Math.random();">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

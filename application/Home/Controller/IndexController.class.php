@@ -16,7 +16,7 @@ class IndexController extends HomeBaseController {
         if(!isset($_GET['tagid']) &&  !isset($_GET['caid']) ){
             $show_array['a_state'] = array('eq',C('ARTICLE_NORMAL'));
             $count = $this->db_Articles->where($show_array)->count();
-            $Page       =  new \Think\Page($count,4);
+            $Page       =  new \Think\Page($count,5);
             $show       =  $Page->show();// 分页显示输出
             $this->assign('page',$show);// 赋值分页输出
             $article_list = $this->db_Articles->where($show_array)->order(array('a_id'=>'desc'))
@@ -37,7 +37,7 @@ class IndexController extends HomeBaseController {
                 ->join('__ARTICLES__ a ON at.at_article_id = a.a_id')
                 ->where($where)
                 ->count();
-            $Page       =  new \Think\Page($count,4);
+            $Page       =  new \Think\Page($count,5);
             $show       =  $Page->show();// 分页显示输出
             $this->assign('page',$show);// 赋值分页输出
             $article_list = $this->db_Article_tag
@@ -63,7 +63,7 @@ class IndexController extends HomeBaseController {
                 ->join('__ARTICLES__ a ON ac.ac_id = a.a_category_id')
                 ->where($where)
                 ->count();
-            $Page       =  new \Think\Page($count,4);
+            $Page       =  new \Think\Page($count,5);
             $show       =  $Page->show();// 分页显示输出
             $this->assign('page',$show);// 赋值分页输出
             $article_list = $this->db_Article_category
@@ -94,6 +94,11 @@ class IndexController extends HomeBaseController {
                 $tag_list_array['ht_id'] = array('in',$tag_id_str);
                 $tag_list = $this->db_Tag->where($tag_list_array)->select();
                 $article_list[$k]['tag_info'] =  $tag_list;
+
+                //暂时都随机产生图片1-10张图片/randimg文件夹下
+                $list_img_src = rand(1,10) . ".png";
+                $article_list[$k]['list_img_src'] =  $list_img_src;
+
             }
         }
 
@@ -101,6 +106,7 @@ class IndexController extends HomeBaseController {
         $this->display();
     }
     public function article(){
+        $tag_id_str = '';
         $a_id = I('get.id');
         if(empty($a_id)){
             $this->error("无法获取原文章",U('Home/Index/index'),'',1);
@@ -109,10 +115,35 @@ class IndexController extends HomeBaseController {
         if(empty($article_info)){
             $this->error("无法获取原文章",U('Home/Index/index'),'',1);
         }
-        $category_list = $this->db_Article_category->select();
-        $this->assign("category_list",$category_list);
+        //标签
+        $tag_id_list = $this->db_Article_tag->where(array('at_article_id'=>$a_id))->select();
+        if(!empty($tag_id_list) && is_array($tag_id_list)){
+            $tag_id_str = '';
+            foreach ($tag_id_list as $key => $val){
+                $tag_id_str .= $val['at_tag_id'].',';
+            }
+            $tag_id_str =  rtrim($tag_id_str, ',');
+        }
+        $tag_list_array['ht_id'] = array('in',$tag_id_str);
+        $tag_list = $this->db_Tag->where($tag_list_array)->select();
+        //分类
+        $category_list = $this->db_Article_category->where(array('ac_id'=>$article_info['a_category_id']))->select();
+        $article_info['tag_list'] = $tag_list;
+        $article_info['category_list'] = $category_list;
+
+        //上一篇
+        $prev_array['a_id'] = array('lt',$a_id);
+        $prev_a=$this->db_Articles->where($prev_array)->order('a_id desc')->limit('1')->find();
+        $this->assign('prev_a',$prev_a);
+        //下一篇
+        $next_array['a_id'] = array('gt',$a_id);
+        $next_a=$this->db_Articles->where($next_array)->order('a_id asc')->limit('1')->find();
+        $this->assign('next_a',$next_a);
+
         $this->assign("article_info",$article_info);
         $this->display();
     }
+    
+   
     
 }

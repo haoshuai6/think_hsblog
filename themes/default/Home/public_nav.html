@@ -8,23 +8,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!--可旋转-->
-            <span class="logo"> <a href="index.html" title="hsblog"></a> </span>
-            <!-- <a class="navbar-brand" href="index.html#">
-                <img src="__HOME_IMAGES__/logo.png" alt="logo" >
-            </a>-->
+            <span class="logo"> <a href="{:U('Home/Index/index')}" title="HSBLOG"> <img src="__HOME_IMAGES__/logo.png" alt="logo" ></a> </span>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a class="sscroll" href="index.html#home">首页</a></li>
-                <li><a class="sscroll" href="index.html#php">PHP</a></li>
-                <li><a class="sscroll" href="index.html#services">进阶之路</a></li>
-                <li><a class="sscroll" href="index.html#html">前端积累</a></li>
-                <li><a class="sscroll" href="index.html#month">心情随笔</a></li>
-                <li><a class="sscroll" href="index.html#blog-front">数据库</a></li>
-                <li><a class="sscroll" href="index.html#blog-front">服务器</a></li>
-                <li><a class="sscroll" href="index.html#about">关于本站</a></li>
+                <li <php> if (!isset($_GET["caid"])){ echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index')}">  首页</a></li>
+                <li <php> if ($_GET["caid"]=="2") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>2))}">  PHP</a></li>
+                <li <php> if ($_GET["caid"]=="3") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>3))}">  进阶之路</a></li>
+                <li <php> if ($_GET["caid"]=="4") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>4))}">  前端积累</a></li>
+                <li <php> if ($_GET["caid"]=="5") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>5))}">  心情随笔</a></li>
+                <li <php> if ($_GET["caid"]=="6") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>6))}">  数据库</a></li>
+                <li <php> if ($_GET["caid"]=="7") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>7))}">  服务器</a></li>
+                <li <php> if ($_GET["caid"]=="8") { echo 'class="active"';} </php>> <a class="sscroll" href="{:U('Home/Index/index',array('caid'=>8))}">  关于本站</a></li>
             </ul>
         </div>
         <!-- navbar -->

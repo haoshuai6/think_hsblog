@@ -236,4 +236,26 @@ function add_water($path){
     }
 }
 
+function sendSMS(){
+    vendor('alidayu.TopSdk');
+    $appkey = '';
+    $secret = '';
+    $c = new TopClient;
+    $c->appkey = $appkey;
+    $c->secretKey = $secret;
+    $c->format = 'json';
+    function SendDayuSMS()
+    {
+        $req = new AlibabaAliqinFcSmsNumSendRequest;
+        $req->setExtend('123456');
+        $req->setSmsType('normal');
+        $req->setSmsFreeSignName(''); //发送的签名
+        $req->setSmsParam("{ 'code':'1234','product':''}");//根据模板进行填写
+        $req->setRecNum('18705');//接收着的手机号码
+        $req->setSmsTemplateCode('SMS_4035770');
+        $resp = $c->execute($req);
+        print_r($resp);
+    }
+}
+
 

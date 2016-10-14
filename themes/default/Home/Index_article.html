@@ -1,109 +1,128 @@
 <include file="public:head" />
 <div id="main-wrapper">
     <include file="public:nav" />
-
-    <div id="container">
+    <div id="container" class="article">
         <!-- BEGIN HOME -->
         <section id="home" class="home container">
-            <!--内容-->
-            <div class="content-wrap"><!--内容-->
+            <div class="content-wrap">
                 <div class="content">
-                    <header class="news_header">
-                        <h2>{$article_info['a_title']}</h2>
-                        <ul>
-                            <li>{$article_info['a_author']}  发布于 {$article_info['a_add_time']}</li>
-                            <li>栏目：<a href="" title="" target="_blank">分类</a></li>
-                            <li>标签：<a href="" title="" target="_blank">标签</a></li>
-                            <li>共 <strong>2345</strong> 人围观 </li>
-                            <li><strong>123</strong> 个不明物体</li>
-                        </ul>
+                    <header class="article-header">
+                        <h1 class="article-title">{$article_info['a_title']}</h1>
+                        <div class="article-meta"> <span class="item article-meta-time">
+                        <time class="time" data-toggle="tooltip" data-placement="bottom" title="时间：{$article_info['a_add_time']}"><i class="glyphicon glyphicon-time"></i> {$article_info['a_add_time']}</time>
+                        </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="来源：{$article_info['a_author']}"><i class="glyphicon glyphicon-globe"></i> {$article_info['a_author']}</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序"><i class="glyphicon glyphicon-list"></i> <a href="program" title="">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span> </div>
                     </header>
-                    <article class="news_content">
+                    <article class="article-content">
+                        <p><img data-original="__HOME_IMAGES__/banner/banner_03.jpg" src="__HOME_IMAGES__/banner/banner_03.jpg" alt="" /></p>
                         {$article_info['a_content']}
                     </article>
-                    <div class="reprint">转载请说明出处：<a href="" title="" target="_blank">HSBLOG技术博客</a> >> <a href="{:U('Home/Index/article',array('id'=>$article_info['a_id']))}" title="" target="_blank">{$article_info['a_title']}</a></div>
-                    <div class="zambia"><a href="javascript:;" name="zambia" rel=""><span class="glyphicon glyphicon-thumbs-up"></span> 赞（0）</a></div>
-                    <div class="tags news_tags">标签： <span data-toggle="tooltip" data-placement="bottom" title="查看关于 本站 的文章"><a href="">本站</a></span> <span data-toggle="tooltip" data-placement="bottom" title="查看关于 HSBLOG 的文章"><a href="">HSBLOG</a></span> </div>
-                    <nav class="page-nav">
-                        <span class="page-nav-prev">上一篇<br /><a href="{:U('Home/Index/article',array('id'=>$article_info['a_id'] - 1))}" rel="prev">欢迎来到HSBLOG技术博客</a></span>
-                        <span class="page-nav-next">下一篇<br /><a href="{:U('Home/Index/article',array('id'=>$article_info['a_id'] + 1))}" rel="next">欢迎来到HSBLOG技术博客</a></span>
+                    <div class="article-tags">
+                        <notempty  name="article_info['tag_list']"> 标签:  </notempty >
+                        <volist name="article_info['tag_list']" id="ta_list" key="j">
+                             <a href="{:U('Home/Index/index',array('tagid'=>$ta_list['ht_id']))}" rel="tag"><i class="glyphicon glyphicon-tags"></i>  {$ta_list['ht_name']}</a> &nbsp;
+                        </volist>
+                    </div>
+                    <nav>
+                        <ul class="pager">
+                            <notempty name="prev_a['a_title']">
+                                <li class="previous">
+                                  <a title="{$prev_a['a_title']}" href="{:U('Home/Index/article',array('id'=>$prev_a['a_id']))}"><i class="glyphicon glyphicon-chevron-left"></i>上一篇</a>
+                                </li>
+                            <else />
+                                <li class="previous disabled">
+                                <a title="没有啦!" ><i class="glyphicon glyphicon-chevron-left"></i>没有了</a>
+                                </li>
+                            </notempty>
+                            <notempty name="next_a['a_title']">
+                                <li class="next">
+                                   <a title="{$next_a['a_title']}" href="{:U('Home/Index/article',array('id'=>$next_a['a_id']))}">下一篇 <i class="glyphicon glyphicon-chevron-right"></i></a>
+                                </li>
+                            <else />
+                                <li class="next disabled">
+                                   <a title="没有啦!" >没有了<i class="glyphicon glyphicon-chevron-right"></i></a>
+                                </li>
+                            </notempty>
+                        </ul>
                     </nav>
-                    <div class="content-block related-content visible-lg visible-md">
-                        <h2 class="title"><strong>相关推荐</strong></h2>
+                    <div class="relates">
+                        <div class="title">
+                            <h3>相关推荐</h3>
+                        </div>
                         <ul>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/logo.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img1.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img3.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img2.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img2.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img3.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客,在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/img1.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
-                            <li><a target="_blank" href=""><img src="__HOME_IMAGES__/logo.jpg" alt="">
-                                <h3> 欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 </h3>
-                            </a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
                         </ul>
                     </div>
-                    <div class="content-block comment">
-                        <h2 class="title"><strong>评论</strong></h2>
-                        <form action="comment.php" method="post" class="form-inline" id="comment-form">
-                            <div class="comment-title">
-                                <div class="form-group">
-                                    <label for="commentName">昵称：</label>
-                                    <input type="text" name="commentName" class="form-control" id="commentName" placeholder="HSBLOG">
-                                </div>
-                                <div class="form-group">
-                                    <label for="commentEmail">邮箱：</label>
-                                    <input type="email" name="commentEmail" class="form-control" id="commentEmail" placeholder="haoshuai_it@163.com">
-                                </div>
-                            </div>
-                            <div class="comment-form">
-                                <textarea placeholder="你的评论可以一针见血" name="commentContent"></textarea>
-                                <div class="comment-form-footer">
-                                    <div class="comment-form-text">请先 <a href="javascript:;">登录</a> 或 <a href="javascript:;">注册</a>，也可匿名评论 </div>
-                                    <div class="comment-form-btn">
-                                        <button type="submit" class="btn btn-default btn-comment">提交评论</button>
+                    <div class="title" id="comment">
+                        <h3>评论 <small>抢沙发</small></h3>
+                    </div>
+
+                    <!--PC和WAP自适应版-->
+                    <div id="SOHUCS" sid="{$article_info['a_id']}" ></div>
+
+
+                    <!--<div id="respond">
+                      <div class="comment-signarea">
+                        <h3 class="text-muted">评论前必须登录！</h3>
+                        <p> <a href="javascript:;" class="btn btn-primary login" rel="nofollow">立即登录</a> &nbsp; <a href="javascript:;" class="btn btn-default register" rel="nofollow">注册</a> </p>
+                        <h3 class="text-muted">当前文章禁止评论</h3>
+                      </div>
+                    </div>
+                    <div id="respond">
+                        <form action="" method="post" id="comment-form">
+                            <div class="comment">
+                                <div class="comment-title"><img class="avatar" src="__HOME_IMAGES__/favicon/favicon.png" alt="" /></div>
+                                <div class="comment-box">
+                                    <textarea placeholder="您的评论可以一针见血" name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="1" ></textarea>
+                                    <div class="comment-ctrl"> <span class="emotion"><img src="__HOME_IMAGES__/face/5.png" width="20" height="20" alt="" />表情</span>
+                                        <div class="comment-prompt"> <i class="fa fa-spin fa-circle-o-notch"></i> <span class="comment-prompt-text"></span> </div>
+                                        <input type="hidden" value="1" class="articleid" />
+                                        <button type="submit" name="comment-submit" id="comment-submit" tabindex="5" articleid="1">评论</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <div class="comment-content">
-                            <ul>
-                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG编辑</strong> (2015-10-18) 说：<br />
-              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>令狐冲</strong> (2015-10-18) 说：<br />
-              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>任盈盈</strong> (2015-10-18) 说：<br />
-              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-                                <li><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
-              欢迎来到HSBLOG技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
-                            </ul>
-                        </div>
                     </div>
+                    <div id="postcomments">
+                        <ol class="commentlist">
+                            <li class="comment-content"><span class="comment-f">#1</span>
+                                <div class="comment-avatar"><img class="avatar" src="__HOME_IMAGES__/favicon/favicon.png" alt="" /></div>
+                                <div class="comment-main">
+                                    <p>来自<span class="address">河南郑州</span>的用户<span class="time">(2016-01-06)</span><br />
+                                        这是匿名评论的内容这是匿名评论的内容，这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容。</p>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div>
+                    </div> -->
+
                 </div>
             </div>
+            <!--/内容-->
             <include file="public:sidebar" />
-
         </section>
         <!-- END HOME -->
-        <!--/返回顶部-->
-        <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
     </div>
 </div>
-
+<!--changyan js-->
+<script type="text/javascript">
+    (function(){
+        var appid = 'cysDKb5wa';
+        var conf = 'prod_ddd27cd65911d819ed21e6fcef931f7e';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); }
+        else
+        {
+            var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+        }
+    })();
+</script>
 <include file="public:footer" />
