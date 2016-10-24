@@ -1,5 +1,7 @@
 ﻿## think_hsblog
 基于Thinkphp+Bootstrap开发的个人博客系统
+##演示地址：
+[http://blog.hsblogs.com](http://blog.hsblogs.com)
 
 ## <?php echo "在开发阶段";  die; ?>
 
