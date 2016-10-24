@@ -2,7 +2,7 @@
 基于Thinkphp+Bootstrap开发的个人博客系统
 ##演示地址：
 [http://blog.hsblogs.com](http://blog.hsblogs.com)
-## <?php echo "在开发阶段";  die; ?>
+## <?php echo "在测试开发阶段";  die; ?>
 
 ## 系统特点
 
