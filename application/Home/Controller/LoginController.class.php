@@ -27,13 +27,13 @@ class LoginController extends BaseController{
                         $this->db_Users->where(array('u_id'=>$user_info['u_id']))->save($update_array);
                         $this->success('登陆成功',U('Home/Index/index'));
                     }else{
-                        $this->error('密码输入错误',U('Home/Index/Index'));
+                        $this->error('密码输入错误',U('Home/Index/index'));
                     }
                 }else{
-                    $this->error('用户不存在',U('Home/Index/Index'));
+                    $this->error('用户不存在',U('Home/Index/index'));
                 }
             }else{
-                $this->error('验证码输入错误',U('Home/Index/Index'));
+                $this->error('验证码输入错误',U('Home/Index/index'));
             }
         }else{
             if(session('hsblog_admin') == 'hsblog_is_login'){
@@ -48,7 +48,7 @@ class LoginController extends BaseController{
         session('hsblog_admin',null);
         session('user_name',null);
         session('user_id',null);
-        $this->success('退出成功',U('Home/Index/Index'));
+        $this->success('退出成功',U('Home/Index/index'));
     }
 
     // 生成验证码

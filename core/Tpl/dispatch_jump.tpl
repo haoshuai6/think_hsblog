@@ -45,8 +45,10 @@ var interval = setInterval(function(){
 			}else {
 				location.href = href;
 			}
-			clearInterval(interval);
-		 <?php }?>
+		 <?php }else{?>
+				location.href = href;
+		  <?php } ?>
+		clearInterval(interval);
 	};
 }, 1000);
 })();

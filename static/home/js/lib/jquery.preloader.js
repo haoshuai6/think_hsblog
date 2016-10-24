@@ -1,6 +1,4 @@
-/* Preloader by Shahriar 
- * http://www.cssmoban.com// 
- **/
+
 (function ($) {
     $(window).load(function () {
         $('#status').fadeOut();

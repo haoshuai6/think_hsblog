@@ -103,6 +103,7 @@ class IndexController extends HomeBaseController {
         }
 
         $this->assign("article_list",$article_list);
+
         $this->display();
     }
     public function article(){
@@ -141,9 +142,50 @@ class IndexController extends HomeBaseController {
         $this->assign('next_a',$next_a);
 
         $this->assign("article_info",$article_info);
+        //系统随机推荐文章，现行规则，根据数据库id随机读取，后面在做修改
+        /*no1 rand()*`a_id`**//*no2 思路: php读取出所有id数组，php数组随机产生一组id字符串，mysql用in去查*/
+        $rand_list = $this->db_Articles->order('rand()*`a_id`')->limit('6')->select();
+        if(!empty($rand_list) && is_array($rand_list)){
+            foreach ($rand_list as $k => $v) {
+                //分类
+                $ac_array['ac_id'] = array('eq', $v['a_category_id']);
+                $category_info = $this->db_Article_category->where($ac_array)->find();
+                $rand_list[$k]['category_info'] = $category_info;
+            }
+        }
+
+        $this->assign("rand_list",$rand_list);
+
         $this->display();
     }
     
-   
+    public function sendMsg(){
+        /*$appkey = "23476581";*/
+        $secret = "42cbc25c574852e80b017f802e4338cf";
+        import('Org.Alidayu.TopClient');
+        import('Org.Alidayu.ResultSet');
+        import('Org.Alidayu.RequestCheckUtil');
+        import('Org.Alidayu.TopLogger');
+        import('Org.Alidayu.AlibabaAliqinFcSmsNumSendRequest');
+        //将需要的类引入，并且将文件名改为原文件名.class.php的形式
+        $c = new \TopClient;
+        $c->appkey = $appkey;
+        $c->secretKey = $secret;
+        $req = new \AlibabaAliqinFcSmsNumSendRequest;
+        $req->setExtend("1");//确定发给的是哪个用户，参数为用户id
+        $req->setSmsType("normal");
+        /*
+           进入阿里大鱼的管理中心找到短信签名管理，输入已存在签名的名称，这里是身份验证。
+        */
+        $req->setSmsFreeSignName("HSBLOG博客");
+        $req->setSmsParam("{\"verify\":\"999999\"}");
+        //这里设定的是发送的短信内容：验证码${code}，您正在进行${product}身份验证，打死不要告诉别人哦！”
+        $req->setRecNum("18853211461");//参数为用户的手机号码
+        $req->setSmsTemplateCode("SMS_17160001");
+        $resp = $c->execute($req);
+        var_dump($resp);
+
+
+    }
     
 }

@@ -739,7 +739,7 @@ color:#FFF;
 }
 /*评论*/
 #comment {
-	margin-bottom: 15px;
+	/*margin-bottom: 15px;*/
 	font-size: 16px;
 }
 #respond, #postcomments {

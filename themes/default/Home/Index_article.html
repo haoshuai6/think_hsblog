@@ -9,15 +9,20 @@
                     <header class="article-header">
                         <h1 class="article-title">{$article_info['a_title']}</h1>
                         <div class="article-meta"> <span class="item article-meta-time">
-                        <time class="time" data-toggle="tooltip" data-placement="bottom" title="时间：{$article_info['a_add_time']}"><i class="glyphicon glyphicon-time"></i> {$article_info['a_add_time']}</time>
-                        </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="来源：{$article_info['a_author']}"><i class="glyphicon glyphicon-globe"></i> {$article_info['a_author']}</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序"><i class="glyphicon glyphicon-list"></i> <a href="program" title="">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span> </div>
+                        <time class="time"  data-placement="bottom" title="时间：{$article_info['a_add_time']}"><i class="glyphicon glyphicon-time"></i> {$article_info['a_add_time']}</time>
+                        </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="来源：{$article_info['a_author']}"><i class="glyphicon glyphicon-globe"></i> {$article_info['a_author']}</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序"><i class="glyphicon glyphicon-list"></i> <a href="program" title="">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="围观：{$article_info['a_click_view']}"><i class="glyphicon glyphicon-eye-open"></i> {$article_info['a_click_view']} </span>
+                               <a class="cloud-tie-join-count" href="javascript:void(0);">
+                                   <i class="glyphicon glyphicon-comment"></i>
+                                      <span  class="item article-meta-comment join-count"  data-toggle="tooltip" data-placement="bottom" title="">0</span>评赞
+                               </a>
+                        </div>
                     </header>
                     <article class="article-content">
                         <p><img data-original="__HOME_IMAGES__/banner/banner_03.jpg" src="__HOME_IMAGES__/banner/banner_03.jpg" alt="" /></p>
                         {$article_info['a_content']}
                     </article>
                     <div class="article-tags">
-                        <notempty  name="article_info['tag_list']"> 标签:  </notempty >
+                        <notempty  name="article_info['tag_list']"> 标签:  </notempty>
                         <volist name="article_info['tag_list']" id="ta_list" key="j">
                              <a href="{:U('Home/Index/index',array('tagid'=>$ta_list['ht_id']))}" rel="tag"><i class="glyphicon glyphicon-tags"></i>  {$ta_list['ht_name']}</a> &nbsp;
                         </volist>
@@ -46,63 +51,19 @@
                     </nav>
                     <div class="relates">
                         <div class="title">
-                            <h3>相关推荐</h3>
+                            <h3>随机推荐文章</h3>
                         </div>
                         <ul>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
-                            <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+                            <volist name="rand_list" id="ra_list" key="j">
+                                <li><a href="{:U('Home/Index/article',array('id'=>$ra_list['a_id']))}"> [{$ra_list['category_info']['ac_name']}]{$ra_list['a_title']} </a></li>
+                            </volist>
                         </ul>
                     </div>
                     <div class="title" id="comment">
                         <h3>评论 <small>抢沙发</small></h3>
                     </div>
-
-                    <!--PC和WAP自适应版-->
-                    <div id="SOHUCS" sid="{$article_info['a_id']}" ></div>
-
-
-                    <!--<div id="respond">
-                      <div class="comment-signarea">
-                        <h3 class="text-muted">评论前必须登录！</h3>
-                        <p> <a href="javascript:;" class="btn btn-primary login" rel="nofollow">立即登录</a> &nbsp; <a href="javascript:;" class="btn btn-default register" rel="nofollow">注册</a> </p>
-                        <h3 class="text-muted">当前文章禁止评论</h3>
-                      </div>
-                    </div>
-                    <div id="respond">
-                        <form action="" method="post" id="comment-form">
-                            <div class="comment">
-                                <div class="comment-title"><img class="avatar" src="__HOME_IMAGES__/favicon/favicon.png" alt="" /></div>
-                                <div class="comment-box">
-                                    <textarea placeholder="您的评论可以一针见血" name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="1" ></textarea>
-                                    <div class="comment-ctrl"> <span class="emotion"><img src="__HOME_IMAGES__/face/5.png" width="20" height="20" alt="" />表情</span>
-                                        <div class="comment-prompt"> <i class="fa fa-spin fa-circle-o-notch"></i> <span class="comment-prompt-text"></span> </div>
-                                        <input type="hidden" value="1" class="articleid" />
-                                        <button type="submit" name="comment-submit" id="comment-submit" tabindex="5" articleid="1">评论</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="postcomments">
-                        <ol class="commentlist">
-                            <li class="comment-content"><span class="comment-f">#1</span>
-                                <div class="comment-avatar"><img class="avatar" src="__HOME_IMAGES__/favicon/favicon.png" alt="" /></div>
-                                <div class="comment-main">
-                                    <p>来自<span class="address">河南郑州</span>的用户<span class="time">(2016-01-06)</span><br />
-                                        这是匿名评论的内容这是匿名评论的内容，这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容。</p>
-                                </div>
-                            </li>
-                        </ol>
-
-                        <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div>
-                    </div> -->
-
+                    <!--网易跟帖-->
+                    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
                 </div>
             </div>
             <!--/内容-->
@@ -111,18 +72,17 @@
         <!-- END HOME -->
     </div>
 </div>
-<!--changyan js-->
-<script type="text/javascript">
-    (function(){
-        var appid = 'cysDKb5wa';
-        var conf = 'prod_ddd27cd65911d819ed21e6fcef931f7e';
-        var width = window.innerWidth || document.documentElement.clientWidth;
-        if (width < 960) {
-            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); }
-        else
-        {
-            var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
-        }
-    })();
+<!-- js-->
+
+<script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "{$article_info['a_id']}",
+        productKey: "5a7dcc477a5e4629a0e72f0afa789142",
+        target: "cloud-tie-wrapper"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
 </script>
 <include file="public:footer" />
