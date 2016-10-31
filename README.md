@@ -17,7 +17,7 @@
 
 Github: [https://github.com/haoshuai6/think_hsblog](https://github.com/haoshuai6/think_hsblog) 
 
-OSChina:  ....
+OSChina:  [http://git.oschina.net/haoshuai_it/think_hsblog](https://github.com/haoshuai6/think_hsblog) 
 
 博客: [http://www.hsblogs.com](http://www.hsblogs.com)
 
