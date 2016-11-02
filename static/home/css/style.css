@@ -2188,6 +2188,10 @@ color:#FFF;
 .home {
 	position: relative;
 }
+.nav-tabs > li {
+	width: 33.3333333333333%;
+}
+
 @media only screen and (max-width: 871px){
 	#menu {
 		position: absolute;
@@ -2289,6 +2293,11 @@ color:#FFF;
 	.content{
 		margin-right: 0 !important;
 		margin-top: 0.1rem !important;
+	}
+}
+@media only screen and (min-width: 1000px) and (max-width: 1500px){
+	.sidebar .fixed {
+		width: 320px; !important;
 	}
 }
 @media only screen and (min-width: 1200px) and (max-width: 1700px){

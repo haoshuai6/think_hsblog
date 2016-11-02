@@ -100,93 +100,31 @@ $(".single .content img").lazyload({
     placeholder: "/static/home/images/occupying.png",
     effect: "fadeIn"
 });
- 
-//IE6-9禁止用户选中文本
-document.body.onselectstart = document.body.ondrag = function () {
-    return false;
-};
+
 //启用工具提示
 $('[data-toggle="tooltip"]').tooltip();
-
-/*//无限滚动反翻页
-jQuery.ias({
-	history: false,
-	container : '.content',
-	item: '.excerpt',
-	pagination: '.pagination',
-	next: '.next-page a',
-	trigger: '查看更多',
-	loader: '<div class="pagination-loading"><img src="/static/home/images/loading.gif" /></div>',
-	triggerPageThreshold: 2,
-	onRenderComplete: function() {
-		$('.excerpt .thumb').lazyload({
-			placeholder: '/static/home/images/occupying.png',
-			threshold: 400
-		});
-		$('.excerpt img').attr('draggable','false');
-		$('.excerpt a').attr('draggable','false');
-	}
-});
- */
 
 //鼠标滚动超出侧边栏高度绝对定位
 $(window).scroll(function () {
     var sidebar = $('.sidebar');
     var sidebarHeight = sidebar.height();
+    var sidebarWidth =  $(window).width();
     var windowScrollTop = $(window).scrollTop();
     if (windowScrollTop > sidebarHeight - 60 && sidebar.length) {
-        $('.fixed').css({
-            'position': 'fixed',
-            'top': '50px',
-            'width': '360px'
-        });
+        if(sidebarWidth >= 1000  &&　sidebarWidth　<= 1506){
+            $('.fixed').css({
+                'position': 'fixed',
+                'top': '50px',
+                'width': '320px'
+            });
+        } else {
+            $('.fixed').css({
+                'position': 'fixed',
+                'top': '50px',
+                'width': '360px'
+            });
+        }
     } else {
         $('.fixed').removeAttr("style");
     }
 });
-
-/*禁止键盘操作*/
-/*document.onkeydown=function(event){
-	var e = event || window.event || arguments.callee.caller.arguments[0];
-	if((e.keyCode === 123) || (e.ctrlKey) || (e.ctrlKey) && (e.keyCode === 85)){
-		return false;
-	}
-}; */
-
-/*文章评论*/
-/*$(function(){
- $("#comment-submit").click(function(){
- var commentContent = $("#comment-textarea");
- var commentButton = $("#comment-submit");
- var promptBox = $('.comment-prompt');
- var promptText = $('.comment-prompt-text');
- var articleid = $('.articleid').val();
- promptBox.fadeIn(400);
- if(commentContent.val() === ''){
- promptText.text('请留下您的评论');
- return false;
- }
- commentButton.attr('disabled',true);
- commentButton.addClass('disabled');
- promptText.text('正在提交...');
- $.ajax({
- type:"POST",
- url:"test.php?id=" + articleid,
- //url:"/Article/comment/id/" + articleid,
- data:"commentContent=" + replace_em(commentContent.val()),
- cache:false, //不缓存此页面
- success:function(data){
- alert(data);
- promptText.text('评论成功!');
- commentContent.val(null);
- $(".commentlist").fadeIn(300);
- /!*$(".commentlist").append();*!/
- commentButton.attr('disabled',false);
- commentButton.removeClass('disabled');
- }
- });
- /!*$(".commentlist").append(replace_em(commentContent.val()));*!/
- promptBox.fadeOut(100);
- return false;
- });
- });*/
