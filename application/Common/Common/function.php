@@ -67,91 +67,8 @@ function chksubmit($check_token = false){
     }
     return true;
 }
-/**
- * 按符号截取字符串的指定部分
- * @param string $str 需要截取的字符串
- * @param string $sign 需要截取的符号
- * @param int $number 如是正数以0为起点从左向右截  负数则从右向左截
- * @return string 返回截取的内容
- */
-/*  示例
-    $str='123/456/789';
-    cut_str($str,'/',0);  返回 123
-    cut_str($str,'/',-1);  返回 789
-    cut_str($str,'/',-2);  返回 456
-    具体参考 http://www.baijunyao.com/index.php/Home/Index/article/aid/18
-*/
-function cut_str($str,$sign,$number){
-    $array=explode($sign, $str);
-    $length=count($array);
-    if($number<0){
-        $new_array=array_reverse($array);
-        $abs_number=abs($number);
-        if($abs_number>$length){
-            return 'error';
-        }else{
-            return $new_array[$abs_number-1];
-        }
-    }else{
-        if($number>=$length){
-            return 'error';
-        }else{
-            return $array[$number];
-        }
-    }
-}
 
-/**
- * 发送邮件
- * @param  string $address 需要发送的邮箱地址
- * @param  string $subject 标题
- * @param  string $content 内容
- * @return boolean         是否成功
- */
-function send_email($address,$subject,$content){
-    $email_smtp=C('EMAIL_SMTP');
-    $email_username=C('EMAIL_USERNAME');
-    $email_password=C('EMAIL_PASSWORD');
-    $email_from_name=C('EMAIL_FROM_NAME');
-    if(empty($email_smtp) || empty($email_username) || empty($email_password) || empty($email_from_name)){
-        return array("error"=>1,"message"=>'邮箱配置不完整');
-    }
-    require './ThinkPHP/Library/Org/Bjy/class.phpmailer.php';
-    require './ThinkPHP/Library/Org/Bjy/class.smtp.php';
-    $phpmailer=new \Phpmailer();
-    // 设置PHPMailer使用SMTP服务器发送Email
-    $phpmailer->IsSMTP();
-    // 设置为html格式
-    $phpmailer->IsHTML(true);
-    // 设置邮件的字符编码'
-    $phpmailer->CharSet='UTF-8';
-    // 设置SMTP服务器。
-    $phpmailer->Host=$email_smtp;
-    // 设置为"需要验证"
-    $phpmailer->SMTPAuth=true;
-    // 设置用户名
-    $phpmailer->Username=$email_username;
-    // 设置密码
-    $phpmailer->Password=$email_password;
-    // 设置邮件头的From字段。
-    $phpmailer->From=$email_username;
-    // 设置发件人名字
-    $phpmailer->FromName=$email_from_name;
-    // 添加收件人地址，可以多次使用来添加多个收件人
-    $phpmailer->AddAddress($address);
-    // 设置邮件标题
-    $phpmailer->Subject=$subject;
-    // 设置邮件正文
-    $phpmailer->Body=$content;
 
-    // 发送邮件。
-    if(!$phpmailer->Send()) {
-        $phpmailererror=$phpmailer->ErrorInfo;
-        return array("error"=>1,"message"=>$phpmailererror);
-    }else{
-        return array("error"=>0);
-    }
-}
 
 /**
  * 生成不重复的随机数
@@ -236,26 +153,5 @@ function add_water($path){
     }
 }
 
-function sendSMS(){
-    vendor('alidayu.TopSdk');
-    $appkey = '';
-    $secret = '';
-    $c = new TopClient;
-    $c->appkey = $appkey;
-    $c->secretKey = $secret;
-    $c->format = 'json';
-    function SendDayuSMS()
-    {
-        $req = new AlibabaAliqinFcSmsNumSendRequest;
-        $req->setExtend('123456');
-        $req->setSmsType('normal');
-        $req->setSmsFreeSignName(''); //发送的签名
-        $req->setSmsParam("{ 'code':'1234','product':''}");//根据模板进行填写
-        $req->setRecNum('18705');//接收着的手机号码
-        $req->setSmsTemplateCode('SMS_4035770');
-        $resp = $c->execute($req);
-        print_r($resp);
-    }
-}
 
 

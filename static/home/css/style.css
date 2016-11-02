@@ -2190,6 +2190,7 @@ color:#FFF;
 }
 .nav-tabs > li {
 	width: 33.3333333333333%;
+	text-align: center;
 }
 
 @media only screen and (max-width: 871px){
