@@ -1,13 +1,8 @@
-﻿## think_hsblog
+﻿﻿## think_hsblog
 基于Thinkphp+Bootstrap开发的个人博客系统
 ##演示地址：
 [http://blog.hsblogs.com](http://blog.hsblogs.com)
-<<<<<<< HEAD
-
-## <?php echo "测试开发阶段";  die; ?>
-=======
 ## <?php echo "目前还在测试开发阶段";  die; ?>
->>>>>>> origin/master
 
 ## 系统特点
 
