@@ -7,7 +7,7 @@ return array(
       new:  Home/Index_inde.html
    */
     'TMPL_FILE_DEPR'    =>  '_',
-    
+ 
     
     'MODULE_ALLOW_LIST'     =>  array ('Home','Admin'),
     'LOAD_EXT_CONFIG'       =>  'db,systemconfig',//加载网站设置文件//数据库配置文件
