@@ -1,7 +1,7 @@
 //页面加载
 $('body').show();
 NProgress.start();
-setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 2000);
+setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
 //返回顶部按钮
 $(function(){
     $(window).scroll(function(){
