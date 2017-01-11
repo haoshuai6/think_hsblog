@@ -1,0 +1,269 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="Keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HSBLOG - Web Beginner</title>
+
+    <link rel="icon" href="__HOME_IMAGES__/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="__HOME_IMAGES__/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="__HOME_IMAGES__/favicon/favicon.ico" type="image/x-icon">
+
+    <link href="__HOME_CSS__/bootstrap.min.css" rel="stylesheet">
+    <link href="__HOME_CSS__/style.css" rel="stylesheet">
+    <link href="__HOME_CSS__/nprogress.css" rel="stylesheet">
+
+
+    <block name="style"></block>
+
+    <!--[if lt IE 9]>
+    <script src="__HOME_JS__/html5shiv.js" type="text/javascript"></script>
+    <script src="__HOME_JS__/respond.min.js" type="text/javascript"></script>
+    <script src="__HOME_JS__/selectivizr-min.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        //判断浏览器是否支持HTML5
+        window.onload = function() {
+            if (!window.applicationCache) {
+                window.location.href="ie.html";
+            }
+        }
+    </script>
+</head>
+<body>
+<section class="container user-select">
+    <header>
+        <!--导航-->
+        <div class="hidden-xs header"><!--超小屏幕不显示-->
+            <h1 class="logo"> <a href="index.html" title="HSBLOG - Web Beginner"></a> </h1>
+            <ul class="nav hidden-xs-nav">
+                <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
+                <li><a href=""><span class="glyphicon glyphicon-erase"></span>网站前端</a></li>
+                <li><a href=""><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
+                <li><a href=""><span class="glyphicon glyphicon-globe"></span>管理系统</a></li>
+                <li><a href="about.html"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
+                <li><a href="friendly.html"><span class="glyphicon glyphicon-tags"></span>友情链接</a></li>
+            </ul>
+            <div class="feeds"> <a class="feed feed-xlweibo" href="" target="_blank"><i></i>新浪微博</a> <a class="feed feed-txweibo" href="" target="_blank"><i></i>腾讯微博</a> <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="微信扫一扫" data-html="true" data-content="<img src='__HOME_IMAGES__/weixin.jpg' alt=''>" href="javascript:;" target="_blank"><i></i>关注微信</a> </div>
+            <div class="wall"><a href="readerWall.html" target="_blank">读者墙</a> | <a href="tags.html" target="_blank">标签云</a></div>
+        </div>
+
+        <!--/超小屏幕不显示-->
+        <div class="visible-xs header-xs"><!--超小屏幕可见-->
+            <div class="navbar-header header-xs-logo">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-xs-menu" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+            </div>
+            <div id="header-xs-menu" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav header-xs-nav">
+                    <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-erase"></span>网站前端</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-globe"></span>管理系统</a></li>
+                    <li><a href="about.html"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
+                    <li><a href="friendly.html"><span class="glyphicon glyphicon-tags"></span>友情链接</a></li>
+                </ul>
+                <form class="navbar-form" action="search.php" method="post" style="padding:0 25px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入关键字">
+                <span class="input-group-btn">
+                <button class="btn btn-default btn-search" type="submit">搜索</button>
+                </span> </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!--/超小屏幕可见-->
+
+    <block name="content"></block>
+
+    <aside class="sidebar visible-lg"><!--右侧>992px显示-->
+        <div class="sentence"> <strong>时光飞逝</strong>
+            <h2> {$date_info} </h2>
+            <p>技术只是解决问题的选择，而不是解决问题的根本。</p>
+        </div>
+
+        <div class="fixed">
+            <div class="widget widget-tabs">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">网站公告</a></li>
+                    <li role="presentation"><a href="#centre" aria-controls="centre" role="tab" data-toggle="tab">会员中心</a></li>
+                    <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">联系站长</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane notice active" id="notice">
+                        <ul>
+                            <li>
+                                <time datetime="2016-01-04">01-04</time>
+                                <a href="" target="_blank">欢迎访问HSBLOG博客</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane centre" id="centre">
+                        <h4>需要登录才能进入会员中心</h4>
+                        <p> <a data-toggle="modal" data-target="#loginModal" class="btn btn-primary">立即登录</a> <a href="javascript:;" class="btn btn-default">现在注册</a> </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane contact" id="contact">
+                        <h2>Email:<br />
+                            <a href="mailto:haoshuai_it@163.com" data-toggle="tooltip" data-placement="bottom" title="haoshuai_it@163.com">haoshuai_it@163.com</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="search" class="sidebar-block search" role="search">
+            <h2 class="title"><strong>搜索</strong></h2>
+            <form class="navbar-form" action="search.php" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" size="35" placeholder="请输入关键字">
+                      <span class="input-group-btn">
+                      <button class="btn btn-default btn-search" type="submit">搜索</button>
+                      </span>
+                </div>
+            </form>
+        </div>
+
+        <div class="sidebar-block recommend">
+            <h2 class="title"><strong>热门推荐</strong></h2>
+            <ul>
+                <li><a target="_blank" href=""> <span class="thumb"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text">HSBLOG博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-block comment">
+            <h2 class="title"><strong>最新评论</strong></h2>
+            <ul>
+                <li data-toggle="tooltip" data-placement="top" title="站长的评论"><a target="_blank" href=""><span class="face"><img src="__HOME_IMAGES__/favicon/favicon.png" alt=""></span> <span class="text"><strong>HSBLOG站长</strong> (2015-10-18) 说：<br />
+          HSBLOG ...</span></a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!--登录注册模态框-->
+    <div class="modal fade user-select" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/Admin/Index/login" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="loginModalLabel">登录</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="loginModalUserNmae">用户名</label>
+                            <input type="text" class="form-control" id="loginModalUserNmae" placeholder="请输入用户名" autofocus maxlength="15" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginModalUserPwd">密码</label>
+                            <input type="password" class="form-control" id="loginModalUserPwd" placeholder="请输入密码" maxlength="18" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/右侧>992px显示-->
+
+    <footer class="footer">
+        <p>&copy; 2016-2017 <a href=""> hsblogs.com All Rights Reserved.</a></p><p> <a href="" target="_blank" rel="nofollow">鲁ICP备16002528号-1</a> &nbsp; <a href="sitemap.xml" target="_blank" class="sitemap">网站地图</a></p>
+    </footer>
+</section>
+<!--返回顶部-->
+<div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
+
+<script src="__HOME_JS__/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="__HOME_JS__/nprogress.js" type="text/javascript" ></script>
+<script src="__HOME_JS__/bootstrap.min.js" type="text/javascript"></script>
+
+
+<script>
+    //页面加载
+    $('body').show();
+    $('.version').text(NProgress.version);
+    NProgress.start();
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+    //返回顶部按钮
+    $(function(){
+        $(window).scroll(function(){
+            if($(window).scrollTop()>100){
+                $(".gotop").fadeIn();
+            }
+            else{
+                $(".gotop").hide();
+            }
+        });
+        $(".gotop").click(function(){
+            $('html,body').animate({'scrollTop':0},500);
+        });
+    });
+    //提示插件启用
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    //鼠标滑过显示 滑离隐藏
+    $(function(){
+        $(".carousel").hover(function(){
+            $(this).find(".carousel-control").show();
+        },function(){
+            $(this).find(".carousel-control").hide();
+        });
+    });
+    $(function(){
+        $(".hot-content ul li").hover(function(){
+            $(this).find("h3").show();
+        },function(){
+            $(this).find("h3").hide();
+        });
+    });
+    //页面元素智能定位
+    $.fn.smartFloat = function() {
+        var position = function(element) {
+            var top = element.position().top; //当前元素对象element距离浏览器上边缘的距离
+            var pos = element.css("position"); //当前元素距离页面document顶部的距离
+            $(window).scroll(function() { //侦听滚动时
+                var scrolls = $(this).scrollTop();
+                if (scrolls > top) { //如果滚动到页面超出了当前元素element的相对页面顶部的高度
+                    if (window.XMLHttpRequest) { //如果不是ie6
+                        element.css({ //设置css
+                            position: "fixed", //固定定位,即不再跟随滚动
+                            top: 0 //距离页面顶部为0
+                        }).addClass("shadow"); //加上阴影样式.shadow
+                    } else { //如果是ie6
+                        element.css({
+                            top: scrolls  //与页面顶部距离
+                        });
+                    }
+                }else {
+                    element.css({ //如果当前元素element未滚动到浏览器上边缘，则使用默认样式
+                        position: pos,
+                        top: top
+                    }).removeClass("shadow");//移除阴影样式.shadow
+                }
+            });
+        };
+        return $(this).each(function() {
+            position($(this));
+        });
+    };
+    //启用页面元素智能定位
+    $(function(){
+        $("#search").smartFloat();
+    });
+
+
+</script>
+
+
+<block name="script"></block>
+
+</body>
+</html>

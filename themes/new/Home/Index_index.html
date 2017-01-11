@@ -1,0 +1,72 @@
+<extend name="./themes/new/template/base.html" />
+<block name="content">
+    <div class="content-wrap"><!--内容-->
+        <div class="content">
+
+            <div class="content-block hot-content hidden-xs">
+                <h2 class="title"><strong>置顶推荐</strong></h2>
+                <ul>
+                   <li class="large">
+                        <a href="content.html" target="_blank"><img src="__HOME_IMAGES__/banner/banner_03.jpg" alt="">
+                            <h3> HSBLOG </h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="content.html" target="_blank"><img src="__HOME_IMAGES__/banner/banner_02.jpg" alt="">
+                            <h3> HSBLOG </h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="content.html" target="_blank"><img src="__HOME_IMAGES__/banner/banner_01.jpg" alt="">
+                            <h3> HSBLOG </h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="content.html" target="_blank"><img src="__HOME_IMAGES__/banner/banner_02.jpg" alt="">
+                            <h3> HSBLOG </h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="content.html" target="_blank"><img src="__HOME_IMAGES__/banner/banner_02.jpg" alt="">
+                            <h3> HSBLOG </h3>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="content-block new-content">
+                <h2 class="title"><strong>最新文章</strong></h2>
+                <div class="row">
+                    <div class="news-list">
+                        <div class="news-img col-xs-4 col-sm-4 col-md-3"> <a target="_blank" href="{:U('Home/Index/article',array('id'=>'2'))}"><img src="__HOME_IMAGES__/logo.jpg" alt=""> </a> </div>
+                        <div class="news-info col-xs-8 col-sm-8 col-md-9">
+                            <dl>
+                                <dt> <a href="{:U('Home/Index/article',array('id'=>'2'))}" target="_blank" > HSBLOG博客正式上线 </a> </dt>
+                                <dd><span class="name"><a href="" title="由 HSBLOG 发布" rel="author">HSBLOG</a></span> <span class="identity"></span> <span class="time"> 2015-10-19 </span></dd>
+                                <dd class="text">欢迎来到HSBLOG博客，在这里可以看到网站前端和后端的技术，还有CMS内容管理系统，包括但不限于这些还有CMS内容管理系统，包括但不限于这些。</dd>
+                            </dl>
+                            <div class="news_bot col-sm-7 col-md-8"> <span class="tags visible-lg visible-md"> <a href="">本站</a> <a href="">HSBLOG</a> </span> <span class="look"> 共 <strong>2126</strong> 人围观，发现 <strong> 12 </strong> 个不明物体 </span> </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="news-more" id="pagination">
+                    <a href="">查看更多</a>
+                </div>-->
+                <div class="quotes" style="margin-top:15px">
+                    <!--
+                    <span class="disabled">首页</span>
+                    <span class="disabled">上一页</span>
+                    <span class="current">1</span>
+                    <a href="">2</a><a href="">下一页</a>
+                    <a href="">尾页</a>
+                    -->
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/内容-->
+
+</block>
+
+

@@ -9,8 +9,10 @@ define('APP_DEBUG',True);
 define('APP_PATH','./application/');
 // 定义缓存目录
 define('RUNTIME_PATH','./data/runtime/');
+//define('UPLOAD_PATH','./data/uploads/');
 // 定义模板主题
-define("DEFAULT_THEME","default");
+//define("DEFAULT_THEME","default");
+define("DEFAULT_THEME","new");
 
 // 定义模板文件默认目录
 define("TMPL_PATH","./themes/".DEFAULT_THEME."/");
